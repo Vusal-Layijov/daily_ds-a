@@ -40,3 +40,55 @@
 
 }
 findball([[-1,1,1]])
+
+// reorder linked list
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
+
+}
+class LinkedList {
+    constructor(head) {
+        this.head = head
+    }
+}
+let node6 = new ListNode(8)
+let node5 = new ListNode(3, node6)
+let node4 = new ListNode(7, node5)
+let node3 = new ListNode(4, node4)
+let node2 = new ListNode(2, node3)
+let node1 = new ListNode(1, node2)
+let current = new LinkedList(node1)
+
+
+// let current2 = new LinkedList(node4)
+
+function reorder(head) {
+    let slow = head
+    let fast = head.next
+    while (fast && fast.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+    let second = slow.next
+    slow.next = null
+    let prev = null
+    while (second) {
+        let tmp = second.next
+        second.next = prev
+        prev = second
+        second = tmp
+    }
+    let first = head
+    second = prev
+    while (second) {
+        let temp1 = first.next
+        let temp2 = second.next
+        first.next = second
+        second.next = temp1
+        second = temp2
+        first = temp1
+    }
+    return head
+}
+console.log(reorder(current.head))
