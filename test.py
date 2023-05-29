@@ -12,3 +12,19 @@ def removeN(head, n):
         right = right.next
     left.next = left.next.next
     return dummy.next
+
+# copy linked list with random pointer
+def copyrandom(head):
+    oldtoCopy = {None: None}
+    cur = head
+    while cur:
+        copy = ListNode(cur.val)
+        oldtoCopy[cur] = copy
+        cur = cur.next
+    cur = head
+    while cur:
+        copy = oldtoCopy[cur]
+        copy.next = oldtoCopy[cur.next]
+        copy.random = oldtoCopy[cur.random]
+        cur = cur.next
+    return oldtoCopy[head]
