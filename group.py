@@ -1,5 +1,6 @@
 def groupAnagrmas(strs):
     res={}
+    enum
     for s in strs:
         count=[0]*26
         for c in s:

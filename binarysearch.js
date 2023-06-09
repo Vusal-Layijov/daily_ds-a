@@ -39,6 +39,7 @@ function depthSearchRecursive(root){
 //breadth search traversal
 function breadthFirstTraversal(root){
     const queue = []
+
     queue.push(root)
     while(queue.length>0){
        let node=queue.shift()
@@ -46,4 +47,20 @@ function breadthFirstTraversal(root){
        queue.push(node.left)
        queue.push(node.right)
     }
+}
+const treeIncludesBreadth=(root, target ) =>{
+    if(root===null) return false
+    const queue = [root]
+    while (queue.length>0){
+        const current = queue.shift()
+        if(current.value ===target) return true
+        if(current.left) queue.push(current.left)
+        if(current.right) queue.push(current.right)
+    }
+    return false
+}
+function treeIncludesRecursive(root, target) {
+    if(root===null) return false
+    if(root.value===target) return true
+    return treeIncludesRecursive(root.left,target) || treeIncludesRecursive(root.right, target)
 }
