@@ -11,7 +11,7 @@ def graphBreadtSearch(start):
     myset=set([start])
     result=[]
     while len(queue):
-        current=queue.popleft()
+        current=queue.pop(0)
         result.append(current)
         for neighbour in adjList[current]:
             if neighbour not in myset:
@@ -19,3 +19,4 @@ def graphBreadtSearch(start):
                 myset.add(neighbour)
     return result
 
+print(graphBreadtSearch(1))
