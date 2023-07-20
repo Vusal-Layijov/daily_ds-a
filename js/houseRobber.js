@@ -8,3 +8,6 @@ var rob = function (nums) {
     }
     return rob2
 };
+var rob2= function(nums){
+   return Math.max(nums[0],rob(nums.slice(1),rob(nums.slice(0,-1))))
+}
