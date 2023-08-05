@@ -7,3 +7,9 @@ def getMinLength(arr):
     for num in arr:
         gcd_result=gcd(gcd_result, num)
     return gcd_result
+#beautiful binary string
+
+
+def beautifulBinaryString(b):
+    # Write your code here
+    return b.count('010')
