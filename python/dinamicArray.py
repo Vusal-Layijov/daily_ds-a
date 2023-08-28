@@ -15,3 +15,19 @@ def dynamicArray(n, queries):
             answers.append(lastAnswer)
 
     return answers
+
+
+def gridChallenge(grid):
+    # Write your code here
+
+    some = []
+    for st in grid:
+        new = list(st)
+        nn = list(sorted(new))
+        some.append(nn)
+    print('sssss', some)
+    for i in range(len(some)-1):
+        for j in range(len(some[0])):
+            if some[i+1][j] < some[i][j]:
+                return 'NO'
+    return 'YES'
