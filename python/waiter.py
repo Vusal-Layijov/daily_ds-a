@@ -15,3 +15,26 @@ def generate_primes(q):
             primes.append(num)
         num += 1
     return primes
+
+
+def waiter(number, q):
+    answers = []
+    stack_a = number
+    primes = generate_primes(q)
+
+    for i in range(q):
+        stack_b = []
+        new_stack_a = []
+
+        while stack_a:
+            plate = stack_a.pop()
+            if plate % primes[i] == 0:
+                stack_b.append(plate)
+            else:
+                new_stack_a.append(plate)
+
+        answers.extend(reversed(stack_b))
+        stack_a = new_stack_a
+
+    answers.extend(reversed(stack_a))
+    return answers
