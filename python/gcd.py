@@ -13,3 +13,23 @@ class Solution:
             return common_str
         else:
             return ""
+
+
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        togo = ''
+        result = []
+        i = 0
+        while i < (min(len(str1), len(str2))):
+            togo = ''
+            for j in range(i+1):
+                if str1[j] == str2[j]:
+                    togo += str1[j]
+            if len(togo) > 0:
+                if len(str1) % len(togo) == 0 and len(str2) % len(togo) == 0:
+                    result.append(togo)
+            i += 1
+        if not result:
+            return ''
+        last = max(result)
+        return last
