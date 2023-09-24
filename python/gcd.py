@@ -33,3 +33,15 @@ class Solution:
             return ''
         last = max(result)
         return last
+
+
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        maxx = max(candies)
+        result = []
+        for candy in candies:
+            if candy + extraCandies >= maxx:
+                result.append(True)
+            else:
+                result.append(False)
+        return
