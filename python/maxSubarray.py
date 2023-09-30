@@ -21,3 +21,29 @@ def maxSubarray(arr):
     if summ==0:
         summ=max(arr)
     return maxx,summ
+
+
+def legoBlocks(n, m):
+    MOD = 1000000007
+
+    # Create a DP array to store the number of ways to build a wall of height i
+    dp = [0] * (n + 1)
+
+    # Initialize the base case
+    dp[0] = 1
+
+    # Define the block sizes
+    block_sizes = [1, 2, 3, 4]
+
+    # Calculate the number of ways to build the wall for each height
+    for height in range(1, n + 1):
+        for block_size in block_sizes:
+            if height >= block_size:
+                dp[height] = (dp[height] + dp[height - block_size]) % MOD
+
+    # Calculate the total number of valid wall formations for width m
+    total_ways = 0
+    for height in range(1, n + 1):
+        total_ways = (total_ways + dp[height]) % MOD
+
+    return total_ways
