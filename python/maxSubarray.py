@@ -66,3 +66,18 @@ class Solution:
             i += 1
 
         return count >= n
+
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        vowels = 'aeiouAEIOU'
+        slist = list(s)
+        start = 0
+        end = len(slist)-1
+        for ind in range(len(s)):
+            if ind < end and s[ind] in vowels:
+                while ind < end and s[end] not in vowels:
+                   end -= 1
+                slist[ind], slist[end] = slist[end], slist[ind]
+                end -= 1
+        return ''.join(slist)
