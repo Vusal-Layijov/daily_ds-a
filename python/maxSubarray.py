@@ -81,3 +81,20 @@ class Solution:
                 slist[ind], slist[end] = slist[end], slist[ind]
                 end -= 1
         return ''.join(slist)
+
+
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        max_sum = sum(nums[:k])
+        current_sum = max_sum
+
+    # Iterate through the array, moving the window
+        for i in range(k, len(nums)):
+            # Add the next element to the window and subtract the first element of the previous window
+            current_sum += nums[i] - nums[i - k]
+            max_sum = max(max_sum, current_sum)
+
+    # Calculate the maximum average
+        max_average = max_sum / k
+
+        return max_average
