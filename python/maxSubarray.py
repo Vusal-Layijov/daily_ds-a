@@ -98,3 +98,12 @@ class Solution:
         max_average = max_sum / k
 
         return max_average
+
+
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        altidudes = [0]
+        for g in gain:
+            newA = altidudes[-1]+g
+            altidudes.append(newA)
+        return max(altidudes)
