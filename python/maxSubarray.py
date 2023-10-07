@@ -107,3 +107,4 @@ class Solution:
             newA = altidudes[-1]+g
             altidudes.append(newA)
         return max(altidudes)
+
