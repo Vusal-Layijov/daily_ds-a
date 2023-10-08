@@ -16,3 +16,13 @@ def findZigZagSequence(a, n):
         else:
             print(a[i], end=' ')
     return
+
+
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        for ind in range(len(nums)):
+            leftSum = sum(nums[:ind])
+            rightSum = sum(nums[ind+1:])
+            if leftSum == rightSum:
+                return ind
+        return -1
