@@ -38,3 +38,16 @@ class Solution:
             if num not in set1:
                 res2.append(num)
         return [res1,res2]
+
+
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        obj = {}
+        for num in arr:
+            if num in obj:
+                obj[num] += 1
+            else:
+                obj[num] = 1
+        result = list(obj.values())
+
+        return len(set(result)) == len(result)
