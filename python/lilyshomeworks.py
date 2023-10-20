@@ -17,3 +17,20 @@ def makeSwaps(arr):
 
 def lilysHomework(arr):
     return min(makeSwaps(arr), makeSwaps(arr[::-1]))
+
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        start = 0
+        finish = len(height)-1
+        maxArea = 0
+        while start < finish:
+            width = finish-start
+            h = min(height[start], height[finish])
+            maxArea = max(maxArea, h * width)
+            if height[start] < height[finish]:
+                start += 1
+            else:
+                finish -= 1
+
+        return maxArea
