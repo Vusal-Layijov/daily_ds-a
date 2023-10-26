@@ -82,3 +82,29 @@ var maxDepth = function (root) {
     }
     return count
 };
+
+var findSon = function (r) {
+    let res = []
+    let s = [r]
+    while (s.length > 0) {
+        let node = s.pop()
+        if (node.left) {
+            s.push(node.left)
+        }
+        if (node.right) {
+            s.push(node.right)
+        }
+        if (!node.left && !node.right) {
+            res.push(node.val)
+        }
+    }
+    return res
+
+
+}
+
+var leafSimilar = function (root1, root2) {
+    let v1 = findSon(root1)
+    let v2 = findSon(root2)
+    return v1.join('') === v2.join('')
+};
