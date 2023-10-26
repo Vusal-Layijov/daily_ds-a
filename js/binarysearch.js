@@ -64,3 +64,21 @@ function treeIncludesRecursive(root, target) {
     if(root.value===target) return true
     return treeIncludesRecursive(root.left,target) || treeIncludesRecursive(root.right, target)
 }
+
+var maxDepth = function (root) {
+    if (root === null) return 0
+    console.log(root)
+    let queue = [root]
+    count = 0
+    while (queue.length > 0) {
+        let level = queue.length
+        for (let i = 0; i < level; i++) {
+            let current = queue.shift()
+            if (current.left) queue.push(current.left)
+            if (current.right) queue.push(current.right)
+        }
+
+        count += 1
+    }
+    return count
+};
