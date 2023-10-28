@@ -108,3 +108,16 @@ var leafSimilar = function (root1, root2) {
     let v2 = findSon(root2)
     return v1.join('') === v2.join('')
 };
+function preOrderRec(root) {
+    let w = '';
+    if (root) {
+        w += `${root.data} `;
+        w += preOrderRec(root.left);
+        w += preOrderRec(root.right);
+    }
+    return w;
+}
+function preOrder(root) {
+    const out = preOrderRec(root);
+    console.log(out);
+}
