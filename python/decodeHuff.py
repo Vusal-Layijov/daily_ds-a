@@ -16,3 +16,4 @@ def decodeHuff(root, s):
             cur_node = cur_node.right
 
     print(encode)
+    
