@@ -87,3 +87,17 @@ class Solution:
             memo[n] = self.tribonacci(
                 n-1) + self.tribonacci(n-2) + self.tribonacci(n-3)
             return memo[n]
+
+
+def findTotalCost(arr):
+    # Write your code here
+    cost = 0
+    while len(arr) > 1:
+        miN = min(arr)
+        maX = max(arr)
+        cost += math.ceil((miN+maX)/(maX-miN+1))
+        arr.remove(miN)
+        arr.remove(maX)
+        arr.append(miN+maX)
+        print(arr)
+    return cost
