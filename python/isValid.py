@@ -32,3 +32,11 @@ def is_valid(s):
 
     # Otherwise, the string is not valid
     return "NO"
+
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        z = [1, 1, 2]
+        for i in range(n):
+            z.append(z[-1]+z[-2])
+        return z[n]
