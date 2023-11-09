@@ -21,3 +21,24 @@ function superDigit(n, k) {
     const concatenatedNumber = n.repeat(k)
     return calculateSuperDigit(concatenatedNumber)
 }
+
+
+var canVisitAllRooms = function (rooms) {
+    const visit = new Array(rooms.length).fill(false);
+    const queue = [];
+
+    queue.push(0);
+
+    while (queue.length > 0) {
+        const curr = queue.shift();
+        visit[curr] = true;
+
+        for (const v of rooms[curr]) {
+            if (!visit[v]) {
+                queue.push(v);
+            }
+        }
+    }
+
+    return visit.every(v => v);
+};
