@@ -81,3 +81,29 @@ def findPrimeDates(d1, m1, y1, d2, m2, y2):
 
 for i in range(1, 15):
     month.append(31)
+
+
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        chars.append('ravan')
+        x = 0
+        togo = ''
+        count = 1
+        while x < len(chars)-1:
+            if chars[x] == chars[x+1]:
+                count += 1
+            elif chars[x] != chars[x+1]:
+                togo += chars[x]
+                if count == 1:
+                    pass
+                else:
+                    togo += str(count)
+                    count = 1
+            x += 1
+
+        print('fffff', togo)
+        chars.clear()
+        for c in togo:
+            chars.append(c)
+
+        return len(chars)
