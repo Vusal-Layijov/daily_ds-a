@@ -153,3 +153,49 @@ def StringChallenge(s):
 
     return 'true' if not stack else stack[-1][1:] if stack[-1].startswith('/') else stack[-1]
 
+#searchingChallenge
+
+
+def searching_challenge(str_arr):
+    grid = [list(row) for row in str_arr]
+    food_positions = []
+    charlie_position = None
+    home_position = None
+
+    # Find the positions of Charlie, Home, and Food
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] == 'C':
+                charlie_position = (i, j)
+            elif grid[i][j] == 'H':
+                home_position = (i, j)
+            elif grid[i][j] == 'F':
+                food_positions.append((i, j))
+
+    # Helper function for DFS
+    def dfs(position, visited, steps):
+        if not food_positions:
+            # If all food is collected, calculate steps to home
+            steps_to_home = abs(
+                position[0] - home_position[0]) + abs(position[1] - home_position[1])
+            return steps + steps_to_home
+
+        min_steps = float('inf')  # Initialize min_steps
+
+        for food_pos in food_positions:
+            if food_pos not in visited:
+                new_visited = visited.copy()
+                new_visited.add(food_pos)
+
+                steps_to_food = abs(
+                    position[0] - food_pos[0]) + abs(position[1] - food_pos[1])
+                result = dfs(food_pos, new_visited, steps + steps_to_food)
+
+                if result != float('inf'):
+                    min_steps = min(min_steps, result)
+
+        return min_steps
+
+    result = dfs(charlie_position, set(), 0)
+
+    return -1 if result == float('inf') else result
