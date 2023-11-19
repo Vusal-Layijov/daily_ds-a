@@ -128,3 +128,28 @@ class Solution:
                     dfs(c, child)
         dfs(0, -1)
         return self.res
+
+
+#string challange
+def StringChallenge(s):
+    stack = []
+    elements = {'b', 'i', 'em', 'div', 'p'}
+
+    for char in s:
+        if char == '<':
+            stack.append('')
+        elif char == '>':
+            if stack:
+                current_element = stack.pop()
+                if not current_element:
+                    continue  
+
+                if current_element.startswith('/'):
+                    opening_tag = current_element[1:]
+                    if not stack or stack[-1] != opening_tag:
+                        return opening_tag
+                else:
+                    stack.append(current_element)
+
+    return 'true' if not stack else stack[-1][1:] if stack[-1].startswith('/') else stack[-1]
+
