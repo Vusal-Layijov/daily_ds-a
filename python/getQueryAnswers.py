@@ -10,3 +10,17 @@ def getQueryAnswers(cache_entries, queries):
         ind = 0
 
     return res
+
+# getMaximumAmount
+def getMaximumAmount(quantity, m):
+    # Write your code here
+    print(quantity, m)
+    maxSales = 0
+    while m > 0:
+        maxA = max(quantity)
+        ind = quantity.index(maxA)
+        quantity[ind] = maxA-1
+        maxSales += maxA
+        m -= 1
+    print(maxSales)
+    return maxSales
