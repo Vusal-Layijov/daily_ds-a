@@ -24,3 +24,6 @@ def getMaximumAmount(quantity, m):
         m -= 1
     print(maxSales)
     return maxSales
+
+def saveThePrisoner(n, m, s):
+    return (m-1 +s)%n or n
