@@ -27,3 +27,14 @@ def getMaximumAmount(quantity, m):
 
 def saveThePrisoner(n, m, s):
     return (m-1 +s)%n or n
+
+#staircase
+def staircase(n):
+    # Write your code here
+    myArr=[' ']*n
+    while n>0:
+        for ind in range(n-1,len(myArr)):
+            myArr[ind]='#'
+            
+        print(''.join(myArr))
+        n-=1
