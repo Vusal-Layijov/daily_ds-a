@@ -43,3 +43,9 @@ def roadsAndLibraries(n, c_lib, c_road, cities):
                 covered.add(city)
 
     return cost
+
+
+def kangaroo(x1, v1, x2, v2):
+    if v2 >= v1 or (x2 - x1) % (v1 - v2) != 0:
+        return "NO"
+    return "YES"
