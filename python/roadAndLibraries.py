@@ -49,3 +49,23 @@ def kangaroo(x1, v1, x2, v2):
     if v2 >= v1 or (x2 - x1) % (v1 - v2) != 0:
         return "NO"
     return "YES"
+
+#get Total
+
+
+def getTotalX(a, b):
+    # Write your code here
+    a.sort()
+    b.sort()
+    check = []
+    for num in range(a[-1], b[0]+1):
+        check.append(num)
+    go1 = []
+    for i in check:
+        if all(map(lambda x: i % x == 0, a)):
+            go1.append(i)
+    go2 = []
+    for j in go1:
+        if all(map(lambda x: x % j == 0, b)):
+            go2.append(j)
+    return len(go2)
