@@ -16,3 +16,12 @@ class Solution:
                 if n2 not in visit:
                     heapq.heappush(minHeap,(w1+w2,n2))
         return t if len(visit)==n else -1
+
+
+def birthday(s, d, m):
+    # Write your code here
+    count = 0
+    for ind in range(len(s)):
+        if sum(s[ind:ind+m]) == d:
+            count += 1
+    return count
