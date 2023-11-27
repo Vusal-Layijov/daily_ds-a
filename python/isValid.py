@@ -40,3 +40,21 @@ class Solution:
         for i in range(n):
             z.append(z[-1]+z[-2])
         return z[n]
+
+# breakingRecords
+
+def breakingRecords(scores):
+    # Write your code here
+    print(scores)
+    maxS=scores[0]
+    minS=scores[0]
+    maxCount=0
+    minCount=0
+    for score in scores[1:]:
+        if score > maxS:
+            maxS=score
+            maxCount+=1
+        elif score<minS:
+            minS=score
+            minCount+=1
+    return [maxCount,minCount]
