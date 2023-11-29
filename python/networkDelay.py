@@ -25,3 +25,23 @@ def birthday(s, d, m):
         if sum(s[ind:ind+m]) == d:
             count += 1
     return count
+
+
+#equal Chocolate
+def equal(arr):
+    # Store all the possibilities
+    possibilities = [0] * 5
+
+    # Start with the minimum element
+    minimum = min(arr)
+
+    for _ in range(len(possibilities)):
+        for k in arr:
+            diff = k - minimum
+            steps_required = diff // 5 + \
+                (diff % 5) // 2 + ((diff % 5) % 2) // 1
+            possibilities[_] += steps_required
+        minimum -= 1
+
+    # Return the minimum number out of all the possibilities
+    return min(possibilities)
