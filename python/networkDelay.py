@@ -72,3 +72,19 @@ class Solution:
                     tmp[d] = prices[s]+p
             prices = tmp
         return -1 if prices[dst] == float('inf') else prices[dst]
+
+
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        if sum(nums) % 2:
+            return False
+        dp = set()
+        dp.add(0)
+        target = sum(nums)//2
+        for ind in range(len(nums)):
+            newDp = set()
+            for t in dp:
+                newDp.add(t)
+                newDp.add(t+nums[ind])
+            dp = newDp
+        return True if target in dp else False
