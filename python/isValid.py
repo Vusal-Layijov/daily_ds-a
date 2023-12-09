@@ -58,3 +58,16 @@ def breakingRecords(scores):
             minS=score
             minCount+=1
     return [maxCount,minCount]
+
+
+def getMoneySpent(keyboards, drives, b):
+    res = []
+    for key in keyboards:
+        for d in drives:
+            res.append(key+d)
+    res.sort(reverse=True)
+    print('resss', res)
+    for num in res:
+        if num <= b:
+            return num
+    return -1
