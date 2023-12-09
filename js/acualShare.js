@@ -15,3 +15,21 @@ function bonAppetit(bill, k, b) {
         console.log(b - actualShare)
     }
 }
+function sockMerchant(n, ar) {
+    // Write your code here
+    let obj = {}
+    let res = 0
+    for (let s of ar) {
+        if (s in obj) {
+            obj[s] += 1
+            if (obj[s] == 2) {
+                res += 1
+                obj[s] = 0
+            }
+
+        } else {
+            obj[s] = 1
+        }
+    }
+    return res
+}
