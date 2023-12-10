@@ -33,3 +33,14 @@ function sockMerchant(n, ar) {
     }
     return res
 }
+function icecreamParlor(m, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let balance = m - arr[i];
+        let find = arr.findIndex((num, index) => {
+            return i != index && num === balance
+        })
+        if (find != -1) {
+            return [i + 1, find + 1]
+        }
+    }
+}
