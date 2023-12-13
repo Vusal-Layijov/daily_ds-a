@@ -38,3 +38,19 @@ def waiter(number, q):
 
     answers.extend(reversed(stack_a))
     return answers
+
+
+def journeyToMoon(n, astronaut):
+    clusters = [set([i]) for i in range(n)]
+    for p in astronaut:
+        all_related = clusters[p[0]].union(clusters[p[1]])
+        for i in all_related:
+            clusters[i] = all_related
+    clusters = set([tuple(s) for s in clusters])
+
+    s, s2 = 0, 0
+    for c in clusters:
+        s += len(c)
+        s2 += len(c)**2
+
+    return (s**2-s2)//2
