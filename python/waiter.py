@@ -68,3 +68,16 @@ def countingValleys(steps, path):
         if c1 == 0 and i == 'U':
             c2 += 1
     return c2
+
+
+#common substring
+def commonSubstring(a, b):
+    # Write your code here
+    res = [False]*len(a)
+    for i, word in enumerate(a):
+        for letter in word:
+            if letter in b[i]:
+                res[i] = True
+                break
+    for r in res:
+        print("YES" if r else 'NO')
