@@ -54,3 +54,17 @@ def journeyToMoon(n, astronaut):
         s2 += len(c)**2
 
     return (s**2-s2)//2
+
+
+def countingValleys(steps, path):
+    # Write your code here
+    c1 = 0
+    c2 = 0
+    for i in path:
+        if i == 'D':
+            c1 -= 1
+        elif i == 'U':
+            c1 += 1
+        if c1 == 0 and i == 'U':
+            c2 += 1
+    return c2
