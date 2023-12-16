@@ -81,3 +81,15 @@ def commonSubstring(a, b):
                 break
     for r in res:
         print("YES" if r else 'NO')
+
+
+def getLatestKRequests(requests, K):
+    # Write your code here
+    mySet = set()
+    res = []
+    for r in requests[::-1]:
+        if K and r not in mySet:
+            res.append(r)
+            mySet.add(r)
+            K-=1
+    return res
