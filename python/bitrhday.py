@@ -6,3 +6,18 @@ def birthday(s, d, m):
             if sum(s[ind:ind+m]) == d:
                 result += 1
     return result
+
+#pickNumbers
+
+def pickingNumbers(a):
+    # Write your code here
+    finalSet = 0
+    a.sort()
+    for i in a:
+        previousSet = 0
+        for j in a:
+            if i == j or (j - i) == 1:
+                previousSet += 1
+        if previousSet > finalSet:
+            finalSet = previousSet
+    return finalSet
