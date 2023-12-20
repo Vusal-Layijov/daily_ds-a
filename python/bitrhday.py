@@ -46,3 +46,11 @@ def bfs(n,m,edges,s):
     return list(dis.values())
 
             
+#get ways
+def getWays(n, c):
+    table = [0] * (n + 1)
+    table[0] = 1
+    for i in range(len(c)):
+        for j in range(c[i], n + 1):
+            table[j] += table[j - c[i]]
+    return table[n]
