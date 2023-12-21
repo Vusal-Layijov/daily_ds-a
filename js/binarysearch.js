@@ -160,3 +160,32 @@ var findJudge = function (n, trust) {
 
     return -1;
 };
+
+function generate(numRows) {
+    if (numRows === 0) {
+        return [];
+    }
+
+    let result = [[1]];
+
+    for (let i = 1; i < numRows; i++) {
+        let prevRow = result[result.length - 1];
+        let newRow = [1];
+
+        for (let j = 1; j < i; j++) {
+            newRow.push(prevRow[j - 1] + prevRow[j]);
+        }
+
+        newRow.push(1);
+        result.push(newRow);
+    }
+
+    return result;
+}
+
+// Example usage:
+let numRows = 5;
+let triangle = generate(numRows);
+for (let row of triangle) {
+    console.log(row);
+}
