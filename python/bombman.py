@@ -38,3 +38,32 @@ class Solution:
                 newRow[j] = newRow[j+1]+row[j]
             row = newRow
         return row[0]
+
+
+#num of islands
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        rows = len(grid)
+        cols = len(grid[0])
+        islands = 0
+        visit = set()
+        if not grid:
+            return 0
+
+        def bfs(r, c):
+            q = [(r, c)]
+            visit.add((r, c))
+            directions = [[0, 1], [0, -1], [-1, 0], [1, 0]]
+            while q:
+                r, c = q.pop(0)
+                for dr, dc in directions:
+                    if r+dr in range(rows) and c+dc in range(cols) and grid[r+dr][c+dc] == '1' and (r+dr, c+dc) not in visit:
+                        visit.add((r+dr, c+dc))
+                        q.append((r+dr, c+dc))
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == '1' and (r, c) not in visit:
+                    bfs(r, c)
+                    islands += 1
+        return islands
