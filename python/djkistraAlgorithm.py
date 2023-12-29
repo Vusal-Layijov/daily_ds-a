@@ -27,3 +27,20 @@ def shortestReach(n, edges, s):
                     bag[v] = new_cost
     
     return processed[1:s] + processed[s+1:]
+
+def candies(n, arr):
+    # Initialize an array to store the number of candies for each child
+    candies_count = [1] * n
+
+    # Traverse the ratings from left to right
+    for i in range(1, n):
+        if arr[i] > arr[i - 1]:
+            candies_count[i] = candies_count[i - 1] + 1
+
+    # Traverse the ratings from right to left
+    for i in range(n - 2, -1, -1):
+        if arr[i] > arr[i + 1]:
+            candies_count[i] = max(candies_count[i], candies_count[i + 1] + 1)
+
+    # The total number of candies is the sum of candies for all children
+    return sum(candies_count)
