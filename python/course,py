@@ -29,3 +29,35 @@ class Solution(object):
                 return False
         return True
             
+
+class Solution(object):
+    def findOrder(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: List[int]
+        """
+        preMap={c:[] for c in range(numCourses)}
+        visit=set()
+        for crs,pre in prerequisites:
+            preMap[crs].append(pre)
+        res=[]
+        cycle=set()
+
+        def dfs(crs):
+            if crs in cycle:
+                return False
+            if crs in visit:
+                return True
+            cycle.add(crs)
+            for pre in preMap[crs]:
+                if dfs(pre) ==False:
+                    return False
+            cycle.remove(crs)
+            visit.add(crs)
+            res.append(crs)
+            return True
+        for crs in range(numCourses):
+            if dfs(crs) == False:
+                return []
+        return res 
