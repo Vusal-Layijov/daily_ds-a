@@ -61,3 +61,13 @@ class Solution(object):
             if dfs(crs) == False:
                 return []
         return res 
+
+def stockMax(prices):
+    profit=0
+    maxP=0
+    for price in prices[::-1]:
+        if price>maxP:
+            maxP=price
+        else:
+            profit+=maxP-price
+    return profit
