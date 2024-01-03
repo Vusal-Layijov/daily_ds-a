@@ -1,3 +1,4 @@
+import math
 class Solution(object):
     def canFinish(self, numCourses, prerequisites):
         """
@@ -71,3 +72,28 @@ def stockMax(prices):
         else:
             profit+=maxP-price
     return profit
+
+
+def is_prime(n):
+    if n % 2 == 0 and n > 2: 
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+    
+# Complete the redJohn function below.
+def redJohn(n):
+    maxHorizontals = n // 4
+    M = 0
+    for i in range(maxHorizontals + 1):
+        simplifiedN = n - (i * 3)        
+        # Using formula "simplifiedN CHOOSE i"
+        M += int(math.factorial(simplifiedN) / (math.factorial(i) * math.factorial(simplifiedN - i)))
+        
+    ans = 0
+    for i in range(M + 1):
+        if i > 1 and is_prime(i):
+            ans += 1
+    return ans
