@@ -122,3 +122,12 @@ class Solution:
         for n1,n2 in edges:
             if not union(n1,n2):
                 return [n1,n2]
+def funnyString(s):
+    # Write your code here
+    r=s[::-1]
+    print(s,r)
+    res=[]
+    for ind in range(len(s)):
+        res.append(abs(ord(s[ind]) - ord(r[ind])))
+    
+    return "Funny" if len(set(res))==1 else 'Not Funny'
