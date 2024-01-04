@@ -131,3 +131,23 @@ def funnyString(s):
         res.append(abs(ord(s[ind]) - ord(r[ind])))
     
     return "Funny" if len(set(res))==1 else 'Not Funny'
+
+def flatlandSpaceStations(n, c):
+    if n == len(c): return 0
+    if 1 == len(c): return max(c[0], n-1-c[0])
+    
+    c = sorted(c)
+    
+    if c[0] == 0:
+        maxDist = 0
+    else:
+        maxDist = c[0]*2
+
+    if c[-1] != n-1:
+        maxDist = max(maxDist, ((n-1)-c[-1])*2)
+    last = 0
+    for i in c:
+        maxDist = max((i-last), maxDist)
+        last = i
+
+    return maxDist//2
