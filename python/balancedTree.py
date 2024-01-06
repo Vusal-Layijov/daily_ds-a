@@ -7,3 +7,19 @@ def balancedTree(root):
         return [balanced, max(left[1],right[1])+1]
     return dfs(root)[0]
 
+class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res =[]
+        def inorder(node):
+            if not node:
+                return
+            inorder(node.left)
+            res.append(node.val)
+            inorder(node.right)
+
+        inorder(root)
+        return res
