@@ -44,3 +44,11 @@ class Solution(object):
                         return True
             return False
         return has_path(src)
+    
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        dp=nums.copy()
+        for ind in range(2,len(nums)):
+            dp[ind]=max(max(dp[0:ind]),nums[ind]+dp[ind-2], nums[ind]+max(dp[0:ind-1]))
+        print(dp)
+        return max(dp)
