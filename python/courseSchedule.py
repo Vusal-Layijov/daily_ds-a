@@ -32,3 +32,15 @@ def angryProfessor(k, a):
         if aS <=0:
             c+=1
     return 'NO' if c>=k else 'YES'
+
+def beautifulDays(i, j, k):
+    # Write your code here
+    res=[]
+    for num in range(i,j+1):
+        r=str(num)
+        new=int(r[::-1])
+        print(new)
+        if (num-new) % k==0:
+            res.append(new)
+    
+    return len(res)
