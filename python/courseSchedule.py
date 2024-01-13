@@ -18,3 +18,8 @@ def canFinish(numCourses,prerequisites):
     for crs in range(numCourses):
         if not dfs(crs): return False
     return True
+
+def hurdleRace(k, height):
+    # Write your code here
+    maxX=max(height)
+    return maxX-k if maxX>k else 0
