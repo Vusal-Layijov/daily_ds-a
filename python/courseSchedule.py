@@ -23,3 +23,12 @@ def hurdleRace(k, height):
     # Write your code here
     maxX=max(height)
     return maxX-k if maxX>k else 0
+
+
+def angryProfessor(k, a):
+    # Write your code here
+    c=0
+    for aS in a:
+        if aS <=0:
+            c+=1
+    return 'NO' if c>=k else 'YES'
