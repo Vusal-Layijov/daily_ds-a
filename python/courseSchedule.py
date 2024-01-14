@@ -44,3 +44,14 @@ def beautifulDays(i, j, k):
             res.append(new)
     
     return len(res)
+
+def viralAdvertising(n):
+    # Write your code here
+    cum=2
+    curr=2
+    for i in range(n-1):
+        get=curr*3
+        newC=get//2
+        cum+=newC
+        curr=newC
+    return cum
