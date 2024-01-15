@@ -55,3 +55,13 @@ def viralAdvertising(n):
         cum+=newC
         curr=newC
     return cum
+
+
+def circularArrayRotation(a, k, queries):
+    for _ in range(k):
+        for i in range(len(a)-1,0,-1):
+            tmp=a[i]
+            a[i]=a[i-1]
+            a[i-1]=tmp
+            
+    return a
