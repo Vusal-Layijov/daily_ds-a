@@ -78,3 +78,10 @@ def jumpingOnClouds(c, k):
         if index == 0:
             break
     return energy
+def findDigits(n):
+    count = 0
+    new = str(n)
+    for d in new:
+        if int(d) != 0 and n % int(d) == 0:
+            count += 1
+    return count
