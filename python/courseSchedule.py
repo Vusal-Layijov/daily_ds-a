@@ -85,3 +85,17 @@ def findDigits(n):
         if int(d) != 0 and n % int(d) == 0:
             count += 1
     return count
+def appendAndDelete(s, t, k):    
+    diff = 0
+    shorter = min(len(s), len(t))
+    for i in range(shorter):
+        if s[i] != t[i] or i == shorter - 1:
+            diff = i
+            break    
+    count = len(s) - diff + len(t) - diff
+    if count <= k and (count - k) % 2 == 0:
+        return "Yes"
+    elif len(s) + len(t) <= k:
+        return "Yes"
+    else:
+        return "No"
