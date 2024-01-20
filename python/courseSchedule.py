@@ -99,3 +99,11 @@ def appendAndDelete(s, t, k):
         return "Yes"
     else:
         return "No"
+def squares(a, b):
+    # Write your code here
+    count=0
+    for num in range(a,b+1):
+        root=num**0.5
+        if root.is_integer():
+            count +=1
+    return count
