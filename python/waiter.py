@@ -93,3 +93,11 @@ def getLatestKRequests(requests, K):
             mySet.add(r)
             K-=1
     return res
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        res=[]
+        for num in range(n+1):
+            brep=bin(num)[2:]
+            count=brep.count('1')
+            res.append(count)
+        return res
