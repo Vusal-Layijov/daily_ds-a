@@ -116,3 +116,19 @@ class Solution:
             dfs(i+1)
         dfs(0)
         return res
+    
+def libraryFine(d1, m1, y1, d2, m2, y2):
+    # Write your code here
+    fine=0
+    date1=date(y1,m1,d1)
+    date2=date(y2,m2,d2)
+    if date1<=date2:
+        return fine
+    if d1>d2 and m1==m2 and y1==y2:
+        fine=15*(d1-d2)
+        return fine
+    if y1>y2:
+        return 10000
+    if m1>m2 and y1==y2:
+        fine=500*(m1-m2)
+        return fine
