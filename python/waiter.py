@@ -132,3 +132,20 @@ def libraryFine(d1, m1, y1, d2, m2, y2):
     if m1>m2 and y1==y2:
         fine=500*(m1-m2)
         return fine
+
+
+def minimalOperations(words):
+    # Write your code here
+    res=[]
+    for w in words:
+        res.append(find(w))
+    return res
+    
+def find(w):
+    count=0
+    newW=list(w)
+    for ind in range(1,len(w)):
+        if newW[ind]==newW[ind-1]:
+            count+=1
+            newW[ind]=1
+    return count
