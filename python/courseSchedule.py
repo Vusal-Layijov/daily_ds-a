@@ -107,3 +107,11 @@ def squares(a, b):
         if root.is_integer():
             count +=1
     return count
+def cutTheSticks(arr):
+    # Write your code here
+    res=[]
+    while len(arr)>0:
+        res.append(len(arr))
+        mini=min(arr)
+        arr=[x-mini for x in arr if x-mini>0]
+    return res
