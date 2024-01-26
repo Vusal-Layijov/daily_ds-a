@@ -131,3 +131,14 @@ class Solution:
             nums.append(n)
         return res
         
+    
+def repeatedString(string, n):
+    # Write your code here
+    count_a = 0
+    if n<len(string):
+        count_a = string[:n%len(string)].count('a')
+    else:
+        count_a = string.count('a') + int(n/len(string)-1)*string.count('a')
+        if n%len(string)>0:
+            count_a+=string[0:n%len(string)].count('a')
+    return count_a
