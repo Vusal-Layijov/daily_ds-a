@@ -160,3 +160,25 @@ class Solution:
             backtrack(i+1,subset)
         backtrack(0,[])
         return res
+def roadsInHackerland(n, roads):
+    # Initialize the distance matrix
+    dist = [[float('inf')] * n for _ in range(n)]
+    for i in range(n):
+        dist[i][i] = 0
+
+    # Fill the distance matrix with road lengths
+    for u, v, w in roads:
+        dist[u-1][v-1] = 2**w  # Convert road length to power of 2
+        dist[v-1][u-1] = 2**w
+
+    # Floyd-Warshall algorithm to find shortest paths
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+
+    # Sum up the distances
+    total_distance = sum(dist[i][j] for i in range(n) for j in range(i+1, n))
+
+    # Convert the sum to binary representation
+    return bin(total_distance)[2:]
