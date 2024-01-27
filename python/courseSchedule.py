@@ -182,3 +182,16 @@ def roadsInHackerland(n, roads):
 
     # Convert the sum to binary representation
     return bin(total_distance)[2:]
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        def dfs(node, path):
+            if node == len(graph) - 1:
+                result.append(path)
+                return
+            for next_node in graph[node]:
+                dfs(next_node, path + [next_node])
+                print(path)
+                
+        result = []
+        dfs(0, [0])
+        return result
