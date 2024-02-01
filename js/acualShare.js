@@ -44,3 +44,21 @@ function icecreamParlor(m, arr) {
         }
     }
 }
+const largestComponenet = (graph) =>{
+    let longest=0
+    let visited= new Set()
+    for (let node in graph){
+        let size = explore(graph,node,visited)
+        if(size>longest)longest=size
+    }
+}
+const explore = (graph,node,visited)=>{
+    if (visited.has(node)) return 0
+    let size=1
+    visited.add(size)
+    for (let neigh of graph[node]){
+        size+= explore(graph,neigh,visited)
+    }
+    return size
+
+}
