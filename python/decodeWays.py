@@ -21,3 +21,29 @@ def numDecodings(s):
         if(i+1<len(s) and (s[i]=='1' or s[i]=='2'and s[i+1] in '0123456')):
             dp[i]+=dp[i+2]
     return dp[0]
+
+
+#minChange
+def min_change(amount,coins):
+  res=_min_change(amount,coins,{})
+  if res==float('inf'):
+    return -1
+  else:
+    return res
+
+
+def _min_change(amount, coins,memo):
+  if amount in memo:
+    return memo[amount]
+  if amount==0:
+    return 0
+  if amount <0:
+    return float('inf')
+  minChange=float('inf')
+  for coin in coins:
+    num_coins =1+ _min_change(amount-coin,coins, memo)
+    if(num_coins<minChange):
+      minChange=num_coins
+  memo[amount]=minChange
+  return minChange
+  
