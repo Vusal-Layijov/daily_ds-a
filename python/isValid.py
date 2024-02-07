@@ -71,3 +71,13 @@ def getMoneySpent(keyboards, drives, b):
         if num <= b:
             return num
     return -1
+
+
+def non_adjacent_sum(nums):
+  sum1=0
+  sum2=0
+  for num in nums:
+    temp=sum1+num
+    sum1=sum2
+    sum2=max(temp,sum2)
+  return sum2
