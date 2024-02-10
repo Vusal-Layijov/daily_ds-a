@@ -40,3 +40,29 @@ def _counting_change(amount, coins, i, memo):
     
   memo[key] = total_count
   return total_count
+
+# ACM TEAM
+def acmTeam(topic):
+    
+    n=len(topic)
+    mySet=set()
+    
+    for num in range(1,n):
+        for num2 in range(num+1,n+1):
+            mySet.add((num,num2))
+    myArr=list(mySet)
+    myArr.sort()
+    res=[0]*len(myArr)
+    i=0
+    for pair in myArr:
+        sumM=0
+        for ind in range(len(topic[pair[0]-1])):
+            if topic[pair[0]-1][ind]=="1" or topic[pair[1]-1][ind]=="1":
+                sumM+=1
+        res[i]=sumM
+        i+=1
+    res2=[]
+    num=max(res)
+    res2.append(num)
+    res2.append(res.count(num))
+    return res2
