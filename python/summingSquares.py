@@ -111,3 +111,12 @@ def _max_palin_subsequence(string, i, j, memo):
       _max_palin_subsequence(string, i, j - 1, memo)
     )
     return memo[key]
+  
+def taumBday(b, w, bc, wc, z):
+    # Write your code here
+    minCost=min(bc,wc)
+    sum1=b*bc + w*wc
+    sum2=b*wc+b*z +w*wc
+    sum3=w*bc+w*z +b*bc
+    
+    return min(sum1,sum2,sum3)
