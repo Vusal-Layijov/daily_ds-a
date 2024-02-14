@@ -120,3 +120,21 @@ def taumBday(b, w, bc, wc, z):
     sum3=w*bc+w*z +b*bc
     
     return min(sum1,sum2,sum3)
+
+def kaprekarNumbers(p, q):
+    result=[]
+    for i in range(p, q+1):
+        if i==1:
+            result.append(1)
+            continue
+        s=str(i**2)
+        a=len(s)-len(str(i))
+        l=''.join(s[:a])
+        r=''.join(s[a:])
+        if r and l:
+            if int(r)+int(l)==i:
+                result.append(i)
+    if len(result)==0:
+        print("INVALID RANGE")
+    else:
+        print(*result)
