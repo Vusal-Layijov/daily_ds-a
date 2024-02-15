@@ -138,3 +138,27 @@ def kaprekarNumbers(p, q):
         print("INVALID RANGE")
     else:
         print(*result)
+    
+
+def MinWindowSubstring(strArr):
+
+  n = strArr[0]
+  k = list(strArr[1])
+
+  windowSize = len(k)
+  
+  while windowSize <= len(n):
+    for i in range(len(n) - windowSize + 1):
+      substring = n[i : i + windowSize]
+      isInSubstring = True
+      substringCopy = substring
+      for character in k:
+        if character in substringCopy:
+          characterIndex = substringCopy.find(character)
+          substringCopy = substringCopy[:characterIndex] + substringCopy[characterIndex + 1:]
+        else:
+          isInSubstring = False
+          break
+      if isInSubstring:
+        return substring
+    windowSize += 1
