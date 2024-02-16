@@ -24,3 +24,20 @@ class Solution:
                 max_rank = max(max_rank, rank)
 
         return max_rank
+    
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if len(s)<=1:
+            return False
+        stack=[]
+        open='({['
+        obj={")":"(","}":"{","]":"["}
+        for c in s:
+            if c in open:
+                stack.append(c)
+            else:
+                if stack and stack[-1]== obj[c]:
+                    stack.pop()
+                else:
+                    stack.append(c)
+        return False if stack else True
