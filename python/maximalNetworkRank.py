@@ -41,3 +41,12 @@ class Solution:
                 else:
                     stack.append(c)
         return False if stack else True
+
+
+def beautifulTriplets(d, arr):
+    # Write your code here
+    count=0
+    for num in arr:
+        if num+d in arr and num + 2*d in arr:
+            count+=1
+    return count
