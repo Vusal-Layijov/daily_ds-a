@@ -70,3 +70,24 @@ class Solution:
             return people        
         dfs(0, None)
         return total_fuel_cost[0]
+
+def getMaxFun(singer, length):
+    # First, calculate initial fun without considering the order.
+    unique_singers = len(set(singer))
+    total_fun = sum(length) * unique_singers
+    
+    # Find the maximum fun by considering the decrement in fun
+    # if a singer with more than one song appears earlier.
+    # We sort by singer to group songs by the same singer together.
+    combined = sorted(zip(singer, length), key=lambda x: (x[0], -x[1]))
+    
+    # Track seen singers to adjust the fun calculation.
+    seen_singers = set()
+    for s, l in combined:
+        if s in seen_singers:
+            # We already had this singer; calculate the reduction in fun.
+            total_fun -= l
+        else:
+            seen_singers.add(s)
+    
+    return total_fun
