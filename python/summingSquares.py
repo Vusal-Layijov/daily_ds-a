@@ -162,3 +162,4 @@ def MinWindowSubstring(strArr):
       if isInSubstring:
         return substring
     windowSize += 1
+    
