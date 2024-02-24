@@ -154,3 +154,13 @@ class Solution:
                 l+=1
             res=max(res,r-l+1)
         return res
+
+#minDIstances
+    
+def minimumDistances(a):
+    # Write your code here
+    res=10000000000000
+    for ind in range(len(a)-1,-1,-1):
+        if a[ind] in a[:ind]:
+            res=min(res,ind-a[:ind].index(a[ind]))
+    return res if res !=10000000000000 else -1
