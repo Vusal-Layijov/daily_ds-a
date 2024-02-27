@@ -62,3 +62,25 @@ const explore = (graph,node,visited)=>{
     return size
 
 }
+export function monthlyCharge(yearMonth, subscription, users) {
+    if (!subscription) return 0; // Step 1
+
+    // Parse year and month for comparison
+    const [year, month] = yearMonth.split("-").map(Number);
+    const firstDayOfMonth = new Date(year, month - 1, 1);
+    const lastDayOfMonth = new Date(year, month, 0); // Day 0 of the next month gives the last day of the current month
+
+    let totalCharge = 0;
+
+    users.forEach(user => {
+        const activatedOn = user.activatedOn;
+        const deactivatedOn = user.deactivatedOn || new Date(); // Treat null as not yet deactivated
+
+        // Check if the user was active during the specified month
+        if ((activatedOn <= lastDayOfMonth && (!user.deactivatedOn || deactivatedOn >= firstDayOfMonth))) {
+            totalCharge += subscription.monthlyPriceInCents;
+        }
+    });
+
+    return totalCharge; // Step 5
+}
