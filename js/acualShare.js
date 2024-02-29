@@ -84,3 +84,16 @@ export function monthlyCharge(yearMonth, subscription, users) {
 
     return totalCharge; // Step 5
 }
+
+// maxArea
+var maxArea = function (height) {
+    let maxWater = 0
+    let i = 0
+    while (i < height.length - 1) {
+        for (let j = i + 1; j < height.length; j++) {
+            maxWater = Math.max(maxWater, ((j - i) * Math.min(height[i], height[j])))
+        }
+        i++
+    }
+    return maxWater
+};
