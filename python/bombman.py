@@ -98,3 +98,21 @@ class Solution:
                 if board[r][c]=="V":
                     board[r][c]='O'
         
+#substrings
+def substrings(n: str) -> int:
+    MOD = 10**9 + 7
+    total_sum = 0
+    substring_sum = 0
+
+    # Iterate through each digit in the string
+    for i in range(len(n)):
+        # Calculate the contribution of the current digit to the sum of all substrings
+        # Formula derived from pattern observation and mathematical induction
+        substring_sum = (substring_sum * 10 + int(n[i]) * (i + 1)) % MOD
+        total_sum = (total_sum + substring_sum) % MOD
+
+    return total_sum
+
+# Example
+n = '42'
+print(substrings(n))  # Expected output: 48
