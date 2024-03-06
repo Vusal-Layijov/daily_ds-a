@@ -157,3 +157,19 @@ def howManyGames(p, d, m, s):
         games += 1  
         p = max(p - d, m)
     return games
+
+def workbook(n, k, arr):
+    specialProblems = 0
+    pageNum = 1
+    
+    for problems in arr:  # For each chapter
+        for problem in range(1, problems + 1):  # For each problem in the chapter
+            if problem == pageNum:
+                specialProblems += 1
+                
+            # Increment page number if it's the last problem on the page
+            # or if it's the last problem in the chapter
+            if problem % k == 0 or problem == problems:
+                pageNum += 1
+                
+    return specialProblems
