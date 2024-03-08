@@ -173,3 +173,19 @@ def workbook(n, k, arr):
                 pageNum += 1
                 
     return specialProblems
+
+def chocolateFeast(n, c, m):
+    # Write your code here
+    print(n,c,m)
+    wrappers=n//c
+    total=wrappers
+    remainder=0
+    while True:
+        newBars=wrappers//m
+        if newBars>=1:
+            remainder=wrappers-newBars*m
+            total+=newBars
+            wrappers=newBars+remainder
+        else:
+            break
+    return total
