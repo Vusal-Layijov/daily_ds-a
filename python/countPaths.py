@@ -1,3 +1,40 @@
+from typing import List
+import heapq
+
+MOD = 10**9 + 7
+
+class Solution:
+    def countPaths(self, n: int, roads: List[List[int]]) -> int:
+        graph = [[] for _ in range(n)]
+        for u, v, time in roads:
+            graph[u].append((v, time))
+            graph[v].append((u, time))
+        
+        # Tuple: (time, node, count)
+        pq = [(0, 0)]
+        times = [float('inf')] * n
+        times[0] = 0
+        ways = [0] * n
+        ways[0] = 1
+        
+        while pq:
+            curr_time, node = heapq.heappop(pq)
+            if curr_time > times[node]:
+                continue
+            for neighbor, time in graph[node]:
+                new_time = curr_time + time
+                # Found a faster way to reach neighbor
+                if new_time < times[neighbor]:
+                    times[neighbor] = new_time
+                    ways[neighbor] = ways[node]
+                    heapq.heappush(pq, (new_time, neighbor))
+                # Found another way with the same minimum time
+                elif new_time == times[neighbor]:
+                    ways[neighbor] = (ways[neighbor] + ways[node]) % MOD
+        
+        return ways[n-1]
+
+
 def count_paths(grid):
   return _count_paths(grid,0,0,{})
   
