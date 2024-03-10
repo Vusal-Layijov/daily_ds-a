@@ -20,3 +20,13 @@ def serviceLane(n, cases):
         output.append(min(width[case[0]:case[1]+1]))
         
     return output
+
+#stones
+def stones(n, a, b):
+    if a == b:
+        return [(n-1)*a]
+        
+    smaller = min(a, b)
+    larger = max(a, b)
+    
+    return [i*larger + (n-1-i)*smaller for i in range(n)]
