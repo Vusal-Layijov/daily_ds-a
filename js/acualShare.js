@@ -97,3 +97,21 @@ var maxArea = function (height) {
     }
     return maxWater
 };
+
+async function getMovieList(year) {
+    let togo = []
+    try {
+        const response = await fetch(`https://jsonmock.hackerrank.com/api/moviesdata?Year=${year}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Data fetched successfully');
+        for (let m of data.data) {
+            togo.push(m.Title)
+        }
+        return togo; 
+    } catch (error) {
+        console.error('Failed to fetch data:', error);
+    }
+}
