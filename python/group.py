@@ -30,3 +30,23 @@ def stones(n, a, b):
     larger = max(a, b)
     
     return [i*larger + (n-1-i)*smaller for i in range(n)]
+
+
+#maxEvents:
+def maxEvents(arrival, duration):
+    # Combine arrival times and durations, then sort by finish time
+    events = sorted([(arrival[i], arrival[i] + duration[i]) for i in range(len(arrival))], key=lambda x: x[1])
+    
+    # Initialize the count of events and the end time of the last selected event
+    count = 0
+    last_end_time = 0
+    
+    # Iterate through the events
+    for start, end in events:
+        # If the start time of the current event is not less than the end time of the last selected event
+        if start >= last_end_time:
+            # Select this event
+            count += 1
+            last_end_time = end
+            
+    return count
