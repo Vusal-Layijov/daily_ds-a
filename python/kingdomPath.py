@@ -73,3 +73,36 @@ def countPaths(n, edges):
     print('INFINITE PATHS')
   else:
     print(memo[start])
+
+
+
+#ladyBug
+def happyLadybugs(b):
+    # Check if all ladybugs are already happy
+    for i in range(len(b)):
+        if b[i] != '_' and (i == 0 or b[i] != b[i-1]) and (i == len(b)-1 or b[i] != b[i+1]):
+            break
+    else:
+        # If the loop did not break, all ladybugs are already happy
+        return "YES"
+    
+    # Check if there is at least one empty cell to allow movement
+    if '_' not in b:
+        return "NO"
+    
+    # Count the occurrences of each ladybug
+    ladybug_counts = {}
+    for bug in b:
+        if bug != '_':
+            if bug in ladybug_counts:
+                ladybug_counts[bug] += 1
+            else:
+                ladybug_counts[bug] = 1
+    
+    # If any ladybug does not have a pair, return "NO"
+    for count in ladybug_counts.values():
+        if count == 1:
+            return "NO"
+    
+    # Otherwise, return "YES" since all ladybugs can be made happy
+    return "YES"
