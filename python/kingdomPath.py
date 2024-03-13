@@ -106,3 +106,19 @@ def happyLadybugs(b):
     
     # Otherwise, return "YES" since all ladybugs can be made happy
     return "YES"
+#strangerCounter
+def strangeCounter(t):
+    if t<1: return 0
+    count = 0
+    power = 0
+    base = 3
+    while count<t:
+        base = 3*2**power
+        if (base+count)<t:
+            count+=base
+            power+=1
+        else:
+            break
+    if count==t: return 1
+    else:
+        return base-(t-count-1)
