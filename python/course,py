@@ -164,3 +164,15 @@ class Solution:
                     dp[i][j]=max(dp[i][j+1],dp[i+1][j])
         return dp[0][0]
         
+    
+def hackerrankInString(s):
+    # Write your code here
+    myList=list(s)
+    myList.append(0)
+    for l in 'hackerrank':
+        if l in myList:
+            ind=myList.index(l)
+            myList=myList[ind+1:]
+        else:
+            return 'NO'
+    return 'YES'
