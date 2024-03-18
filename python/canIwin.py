@@ -22,3 +22,11 @@ class Solution:
         # Initial call with all choices available and total=0
         choices = list(range(1, maxChoosableInteger + 1))
         return canWin(choices, 0)
+
+class Solution:
+    def getLongestSubsequence(self, words: List[str], groups: List[int]) -> List[str]:
+        maxL=[words[0]]
+        for i in range(1,len(groups)):
+            if groups[i]!=groups[i-1]:
+                maxL.append(words[i])
+        return maxL
