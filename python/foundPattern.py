@@ -19,3 +19,24 @@ def gridSearch(G, P):
             if found:
                 return 'YES'
     return 'NO'
+def almostSorted(arr):
+    # Write your code here
+    sorted_arr = sorted(arr)
+    
+    index_list = []
+    
+    for i in range(len(sorted_arr)):
+        if sorted_arr[i] != arr[i]:
+            index_list.append(i+1)
+    
+    if len(index_list) == 2:
+        print('yes')
+        print('swap ' + str(index_list[0]) + ' ' + str(index_list[1]))
+        
+    else:
+        sub_list = arr[index_list[0]-1: index_list[-1]]
+        if sorted(sub_list, reverse=True) != arr[index_list[0]-1: index_list[-1]]:
+            print('no')
+        else:
+            print('yes')
+            print('reverse ' + str(index_list[0]) + ' ' + str(index_list[-1]))
