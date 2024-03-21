@@ -81,3 +81,26 @@ def non_adjacent_sum(nums):
     sum1=sum2
     sum2=max(temp,sum2)
   return sum2
+
+#weightedUniformStrings
+def weightedUniformStrings(s, queries):
+    low = "abcdefghijklmnopqrstuvwxyz"
+    r = []
+    res = set()
+    result = []
+    for x in s:
+        if not r or r[-1] != x:
+            r.append(x)
+            count = 1
+        else:
+            count += 1
+            res.add(count * (low.index(x) + 1))
+    for x in r:
+        res.add(low.index(x) + 1)
+    for x in queries:
+        if x in res:
+            result.append("Yes")
+        else:
+            result.append("No")
+    return result
+        
