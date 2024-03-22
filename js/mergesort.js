@@ -45,3 +45,27 @@ function merge(arrA, arrB) {
     // Return the return array
     return [...res, ...arrA.slice(indexA), ...arrB.slice(indexB)]
 }
+
+function closestNumbers(arr) {
+    // Write your code here
+    arr.sort(function (a, b) { return a - b })
+    let diff = arr[1] - arr[0]
+    let temp = 0
+
+    for (let x = 2; x < arr.length; x++) {
+        temp = arr[x] - arr[x - 1]
+        if (temp <= diff) {
+            diff = temp
+        }
+    }
+
+    let data = []
+
+    for (let index = 1; index < arr.length; index++) {
+        if (arr[index] - arr[index - 1] === diff) {
+            data.push(arr[index - 1], arr[index])
+        }
+    }
+
+    return data
+}
