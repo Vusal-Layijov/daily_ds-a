@@ -188,3 +188,23 @@ class Solution:
                     break
             first = not first
         return first
+    
+def maxSubarray(arr):
+    # Maximum subsequence sum
+    maxsq = max(arr)  # In case all numbers are negative, pick the largest
+    if maxsq > 0:  # If there are positive numbers, sum them
+        maxsq = sum(num for num in arr if num > 0)
+    else:
+        # All numbers are negative, so we don't need to sum; maxsq is already the maximum number
+        pass
+    
+    # Maximum subarray sum using Kadane's Algorithm
+    max_ending_here = max_so_far = arr[0]
+    for num in arr[1:]:
+        # max_ending_here keeps track of the sum of the subarray ending at the current position
+        # It is either the current number itself or the current number plus the previous max_ending_here, whichever is larger
+        max_ending_here = max(num, max_ending_here + num)
+        # max_so_far keeps track of the largest sum we have seen so far
+        max_so_far = max(max_so_far, max_ending_here)
+    
+    return (max_so_far, maxsq)
