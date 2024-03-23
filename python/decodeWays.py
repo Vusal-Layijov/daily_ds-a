@@ -47,3 +47,16 @@ def _min_change(amount, coins,memo):
   memo[amount]=minChange
   return minChange
   
+
+def isPalindrome(s):
+  return s == s[::-1]
+
+def palindromeIndex(s):
+    if isPalindrome(s):
+        return -1
+    
+    for i in range(len(s)//2):
+        if s[i] != s[len(s) - 1 - i]:
+            return i if isPalindrome(s[:i] + s[i+1:]) else len(s) - 1 - i
+            
+    return -1
