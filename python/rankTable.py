@@ -15,3 +15,21 @@ def climbingLeaderboard(ranked, player):
         player_ranks.append(len(unique_ranked) + 1)
 
     return player_ranks
+
+
+def anagram(s):
+    # Write your code here
+    if len(s)%2 !=0:
+        return -1
+    m=int(len(s)/2)
+    w1=s[:m]
+    w2=s[m:]
+    print(w1,w2)
+    count=0
+    myList=list(w2)
+    for l in w1:
+        if l in myList:
+            myList.remove(l)
+        else:
+            count+=1
+    return count
