@@ -33,3 +33,19 @@ def anagram(s):
         else:
             count+=1
     return count
+
+#findSmallestSetOfVertices
+
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        # Set to keep track of nodes with incoming edges
+        has_incoming_edge = set()
+        
+        # Populate the set with destination nodes of all edges
+        for edge in edges:
+            has_incoming_edge.add(edge[1])
+            
+        # The result is all nodes that don't have an incoming edge
+        result = [node for node in range(n) if node not in has_incoming_edge]
+        
+        return result
