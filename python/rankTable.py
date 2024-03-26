@@ -49,3 +49,24 @@ class Solution:
         result = [node for node in range(n) if node not in has_incoming_edge]
         
         return result
+
+#numIslands new
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        count=0
+        visited=set()
+        R=len(grid)
+        C=len(grid[0])
+        def dfs(r,c):
+            visited.add((r,c))
+            directions=[(0,1),(0,-1),(1,0),(-1,0)]
+            for dr,dc in directions:
+                if r+dr<R and dr+r >=0 and c+dc < C and c+dc>=0 and grid[r+dr][c+dc]=='1' and (r+dr,c+dc) not in visited:
+                    dfs(r+dr,c+dc)
+            return True
+
+        for i in range(R):
+            for j in range(C):
+                if (i,j) not in visited and grid[i][j]=='1' and dfs(i,j):
+                    count+=1
+        return count
