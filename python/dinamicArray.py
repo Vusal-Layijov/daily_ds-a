@@ -31,3 +31,27 @@ def gridChallenge(grid):
             if some[i+1][j] < some[i][j]:
                 return 'NO'
     return 'YES'
+
+#removeNthFromEnd
+
+def removeNthFromEnd(head, n):
+    # Write your code here
+    st=head
+    c=1
+    while st.next:
+        st=st.next
+        c+=1
+    if c==1:
+        return []
+    current=head
+    nextNode=current.next
+    dummy=SinglyLinkedListNode(0)
+    dummy.next=current
+    r=c-n
+    while current.next and r>0:
+        dummy=current
+        current=nextNode
+        nextNode=current.next
+        r-=1
+    dummy.next=nextNode
+    return head
