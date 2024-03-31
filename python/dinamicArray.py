@@ -74,3 +74,24 @@ def separateNumbers(s):
             return
     
     print('NO')
+def separateNumbers2(s):
+    first = None
+    for i in range(1, len(s)//2+1):
+        first = int(s[0: i])
+        n = 1
+        j = i
+        while j < len(s):
+            if s[j:].startswith(str(first+n)):
+                j += len(str(first+n))
+                n += 1
+            else:
+                first = None
+                break
+        
+        if first:
+            break
+    
+    if first:
+        print(f"YES {str(first)}")
+    else:
+        print("NO")
