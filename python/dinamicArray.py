@@ -105,4 +105,30 @@ def makingAnagrams(s1, s2):
         if l in l2:
             l1.remove(l)
             l2.remove(l)
-    return len(l1) +len(l2)
+    #maxAreaOfIsland
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        rows=len(grid)
+        cols=len(grid[0])
+        maxA=0
+        visited=set()
+        def bfs(r,c):
+        
+            direction=[[0,1],[0,-1],[1,0],[-1,0]]
+            count=1
+            q=[(r,c)]
+            while len(q)>0:
+                row,col=q.pop(0)
+                for dr,dc in direction:
+                    if row+dr in range(rows) and col+dc in range(cols) and (row+dr,col+dc) not in visited and grid[row+dr][col+dc]==1:
+                        visited.add((row+dr,col+dc))
+                        q.append((row+dr,col+dc))
+                        count+=1
+            return count
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j]==1 and (i,j) not in visited:
+                    visited.add((i,j))
+                    num=bfs(i,j)
+                    maxA=max(maxA,num)
+        return maxA
