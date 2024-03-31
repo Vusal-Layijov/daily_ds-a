@@ -95,3 +95,14 @@ def separateNumbers2(s):
         print(f"YES {str(first)}")
     else:
         print("NO")
+    
+#making anagrams
+def makingAnagrams(s1, s2):
+    # Write your code here
+    l1=list(s1)
+    l2=list(s2)
+    for l in s1:
+        if l in l2:
+            l1.remove(l)
+            l2.remove(l)
+    return len(l1) +len(l2)
