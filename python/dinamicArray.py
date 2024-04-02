@@ -132,3 +132,30 @@ class Solution:
                     num=bfs(i,j)
                     maxA=max(maxA,num)
         return maxA
+
+
+#TreeConstructor
+
+def TreeConstructor(strArr):
+  iAmparent={}
+  iAmchild={}
+  for pair in strArr:
+    cur=pair.split(',')
+    first=cur[0]
+    second=cur[1]
+    sL=len(second)
+    if int(first[1:]) in iAmchild:
+      iAmchild[int(first[1:])]+=1
+    if int(first[1:]) not in iAmchild:
+      iAmchild[int(first[1:])]=1
+    if int(second[0:sL-1]) in iAmparent:
+      iAmparent[int(second[0:sL-1])]+=1
+    if int(second[0:sL-1]) not in iAmparent:
+      iAmparent[int(second[0:sL-1])]=1
+  
+  pValues=list(iAmparent.values())
+  cValues=list(iAmchild.values())
+  if max(pValues)>=3 or max(cValues)>=2:
+    return "false"
+  # code goes here
+  return "true"
