@@ -159,3 +159,18 @@ def TreeConstructor(strArr):
     return "false"
   # code goes here
   return "true"
+
+
+#stringConstruction
+
+def stringConstruction(s):
+    # Write your code here
+    p=''
+    count=0
+    for l in s:
+        if l not in p:
+            p+=l
+            count+=1
+        else:
+            p+=l
+    return count
