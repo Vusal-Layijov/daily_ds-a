@@ -174,3 +174,32 @@ def stringConstruction(s):
         else:
             p+=l
     return count
+#quickestWayUp
+
+def quickestWayUp(ladders, snakes):
+    
+    skipstart, skipend = zip(*(snakes + ladders))
+    print(ladders,snakes)
+    print(skipstart, skipend )
+    next_space = [1]
+    visited = set()
+    visited.add(1)
+    rolls = 0
+    
+    while 100 not in visited:
+        curr = next_space
+        rolls += 1
+        
+        next_space = []
+        for start in curr: # run once for every current space
+            for roll in range(1, 7): # run once for every roll
+                end = start + roll
+                if end in skipstart:
+                    end = skipend[skipstart.index(end)] # follow the snake/ladder if applicable
+                if end not in visited:
+                    next_space.append(end)
+                    visited.add(end)
+        if len(next_space) == 0:
+            rolls = -1
+            break
+    return(rolls)
