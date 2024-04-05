@@ -203,3 +203,24 @@ def quickestWayUp(ladders, snakes):
             rolls = -1
             break
     return(rolls)
+
+
+#isValid
+def isValid(s):
+    li = []
+    for c in set(s):
+        li.append(s.count(c))
+    if len(set(li)) == 1:
+        return "YES"
+    elif len(set(li)) > 2:
+        return "NO"
+    else:
+        mf = max(set(li), key=li.count)
+        lf = min(set(li), key=li.count)
+        if li.count(lf) == 1:
+            if lf == 1 or lf-mf == 1:
+                return "YES"
+            else:
+                return "NO"
+        else:
+            return "NO"
