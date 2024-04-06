@@ -61,3 +61,19 @@ function shop(n, k, centers, roads) {
 
     return min;
 }
+
+function lonelyinteger(a) {
+    // Write your code here
+    let myObj = {}
+    for (let num of a) {
+        if (num in myObj) {
+            myObj[num] += 1
+        } else {
+            myObj[num] = 1
+        }
+    }
+    for (let [key, value] of Object.entries(myObj)) {
+        if (value == 1) return key
+    }
+
+}
