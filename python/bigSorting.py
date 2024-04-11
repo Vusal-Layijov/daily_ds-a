@@ -28,3 +28,20 @@ class Solution:
                 togo += word2[count]
             count += 1
         return togo
+    
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        start = 0
+        end = len(nums) - 1
+        
+        while start <= end:
+            midd = start + (end - start) // 2  # Ensure midd is recalculated in each iteration based on the updated start and end
+            
+            if nums[midd] == target:
+                return midd
+            elif target < nums[midd]:
+                end = midd - 1  # Move end to the left of midd
+            else:  # target > nums[midd]
+                start = midd + 1  # Move start to the right of midd
+        
+        return -1
