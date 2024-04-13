@@ -119,3 +119,14 @@ class Solution:
                i += 1
 
         return []
+
+
+def collision(speed, pos):
+    # Write your code here
+    count=0
+    for ind, num in enumerate(speed):
+        if ind <pos and num >speed[pos]:
+            count +=1
+        elif ind>pos and num<speed[pos]:
+            count +=1
+    return count
