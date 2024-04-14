@@ -27,3 +27,4 @@ class Solution:
 
     def isBetween(self, arr, target):  
         return arr[0] <= target <= arr[-1]  
+    
