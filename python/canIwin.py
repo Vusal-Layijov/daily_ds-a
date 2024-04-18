@@ -30,3 +30,14 @@ class Solution:
             if groups[i]!=groups[i-1]:
                 maxL.append(words[i])
         return maxL
+    
+
+def flippingBits(n):
+    # Write your code here
+    newN=''
+    for s in change32(n):
+        if int(s):
+            newN+='0'
+        else:
+            newN+='1'
+    return int(newN,2)
