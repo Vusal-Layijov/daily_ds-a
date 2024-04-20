@@ -41,3 +41,18 @@ def flippingBits(n):
         else:
             newN+='1'
     return int(newN,2)
+
+
+def commonChild(s1, s2):
+    n=len(s1)
+    s1='0'+s1
+    s2='1'+s2
+    count=[[0 for i in range(n+1)] for j in range(n+1)]
+    print('ccc',count)
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if s1[i]==s2[j]:
+                count[i][j]=count[i-1][j-1]+1
+            else:
+                count[i][j]=max(count[i-1][j], count[i][j-1])
+    return count[n][n]
