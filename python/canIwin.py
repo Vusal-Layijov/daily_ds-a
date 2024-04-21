@@ -56,3 +56,15 @@ def commonChild(s1, s2):
             else:
                 count[i][j]=max(count[i-1][j], count[i][j-1])
     return count[n][n]
+
+def balancedSums(arr):
+    total_sum = sum(arr)
+    left_sum = 0
+    
+    for num in arr:
+        total_sum -= num
+        if left_sum == total_sum:
+            return 'YES'
+        left_sum += num
+            
+    return 'NO'
