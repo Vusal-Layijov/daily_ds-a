@@ -1,3 +1,4 @@
+import math
 class Solution:
     def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
         if (maxChoosableInteger + 1) * maxChoosableInteger / 2 < desiredTotal:
@@ -68,3 +69,15 @@ def balancedSums(arr):
         left_sum += num
             
     return 'NO'
+def counterGame(n):
+    dict1 = {0:"Richard", 1:"Louise"}
+    turn = 0
+    while n > 1:
+        if math.log2(n).is_integer():
+            n //= 2 
+        else:
+            power_of_2 = 2 ** (int(math.log2(n)))
+            n -= power_of_2
+        turn = 1 - turn
+    win = dict1[turn]
+    return win
