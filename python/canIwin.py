@@ -94,3 +94,16 @@ def sansaXor(arr):
         return x
     
     return 0
+
+
+def get_all_subarrays(arr):
+    subarrays = []
+    n = len(arr)
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            subarrays.append(arr[i:j])
+    return subarrays
+
+# Example usage
+array = [1, 2, 3]
+print(get_all_subarrays(array))
