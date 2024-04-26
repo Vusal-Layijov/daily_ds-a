@@ -107,3 +107,8 @@ def get_all_subarrays(arr):
 # Example usage
 array = [1, 2, 3]
 print(get_all_subarrays(array))
+
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        return len(set(nums))!=len(nums)
