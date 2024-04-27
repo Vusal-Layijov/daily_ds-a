@@ -120,3 +120,19 @@ class Solution:
         l1.sort()
         l2.sort()
         return l1==l2
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices:
+            return 0
+        
+        max_profit = 0
+        min_price = float('inf')  # Start with the highest possible price
+
+        for price in prices:
+            if price < min_price:
+                min_price = price  # Update min_price to the lowest found so far
+            elif price - min_price > max_profit:
+                max_profit = price - min_price  # Calculate max profit from the lowest price point
+        
+        return max_profit
