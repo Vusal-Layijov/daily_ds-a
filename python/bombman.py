@@ -203,3 +203,14 @@ class Solution:
         
         result = [element[0] for element in sorted_elements[:k]]
         return result
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        minPr=prices[0]
+        maxProfit=0
+        for i in range(1,len(prices)):
+            if prices[i]>minPr:
+                maxProfit=max(maxProfit,prices[i]-minPr)
+            else:
+                minPr=prices[i]
+        return maxProfit
