@@ -214,3 +214,24 @@ class Solution:
             else:
                 minPr=prices[i]
         return maxProfit
+import math
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        start = 1  # start with the smallest possible speed
+        end = max(piles)  # the maximum speed needed could be the largest pile
+        k = float('inf')
+
+        while start <= end:
+            mid = (start + end) // 2
+            hours = 0
+            for pile in piles:
+                hours += math.ceil(pile / mid)  # calculate total hours to eat all bananas at speed 'mid'
+            
+            if hours <= h:
+                k = min(mid, k)  # update minimum speed if this speed achieves within 'h' hours
+                end = mid - 1
+            else:
+                start = mid + 1
+
+        return k
