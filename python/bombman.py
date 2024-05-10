@@ -235,3 +235,24 @@ class Solution:
                 start = mid + 1
 
         return k
+
+
+def mergingIntervals(arr):
+    if not arr:
+        return []
+    arr.sort()
+    res=[]
+    curr=arr[0]
+    for i in range(1,len(arr)):
+        p=arr[i]
+        if p[0]<=curr[1]:
+            curr[1]=max(curr[1],p[1])
+        else:
+            res.append(curr)
+            curr=p
+    res.append(curr)
+
+    return res
+        
+
+print(mergingIntervals([[1, 3], [2, 6], [8, 10], [15, 18]])==[[1, 6], [8, 10], [15, 18]])
