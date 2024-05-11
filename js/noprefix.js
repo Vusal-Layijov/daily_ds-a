@@ -19,3 +19,16 @@ function noPrefix(words) {
     }
     console.log("GOOD SET");
 }
+
+var rob = function (nums) {
+    let rob1 = 0
+    let rob2 = 0
+
+    for (let r of nums) {
+        tmp = rob1 + r
+        rob1 = rob2
+        rob2 = Math.max(tmp, rob1)
+    }
+
+    return rob2
+};
