@@ -45,3 +45,19 @@ class Solution:
             else:
                 result.append(False)
         return
+    
+def cipher(k, s):
+    orig=""
+    number_of_ones=0
+    for i,b in enumerate(s[:len(s)-k+1]):
+        if i>=k:
+            if orig[i-k]=="1":
+                number_of_ones-=1
+
+        if (b=="1" and number_of_ones%2==0) or (b=="0" and number_of_ones%2==1):
+            orig+="1"
+            number_of_ones+=1
+        else:
+            orig+="0"
+
+    return orig
