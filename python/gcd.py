@@ -61,3 +61,5 @@ def cipher(k, s):
             orig+="0"
 
     return orig
+def bigSorting(unsorted):
+    return sorted(unsorted, key=lambda x: (len(x), x))
