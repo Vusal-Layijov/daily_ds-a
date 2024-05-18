@@ -9,3 +9,14 @@ var compactObject = function (obj) {
     }
     return compacted
 };
+var canJump = function (nums) {
+    let goal = nums.length - 1
+    for (let i = nums.length - 1; i--; i >= 0) {
+        if (i + nums[i] >= goal) {
+            goal = i
+        }
+    }
+    let togo;
+    goal === 0 ? togo = true : togo = false
+    return togo
+};
