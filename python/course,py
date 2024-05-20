@@ -208,3 +208,24 @@ def maxSubarray(arr):
         max_so_far = max(max_so_far, max_ending_here)
     
     return (max_so_far, maxsq)
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        return max(nums[0], self.hlpr(nums[1:]),self.hlpr(nums[:-1]))
+    def hlpr(self, nums: List[int]) -> int:
+        rob1=0
+        rob2=0
+        
+        for i  in range(len(nums)):
+            tmp=nums[i]+rob1
+            rob1=rob2
+            rob2=max(tmp,rob2)
+        return rob2
+
+        
+        
+
+
+        
+
+        
