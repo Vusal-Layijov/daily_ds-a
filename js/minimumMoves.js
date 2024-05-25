@@ -151,3 +151,17 @@ function orangesRotting(grid) {
 
     return fresh === 0 ? time : -1;
 }
+var topKFrequent = function (nums, k) {
+    const uniqueElements = new Set(nums);
+    const frequency = {};
+    uniqueElements.forEach(num => {
+        frequency[num] = nums.filter(n => n === num).length;
+    });
+
+    const sortedElements = Object.entries(frequency).sort((a, b) => b[1] - a[1]);
+
+
+    const result = sortedElements.slice(0, k).map(element => parseInt(element[0]));
+
+    return result;
+};
