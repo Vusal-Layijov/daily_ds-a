@@ -229,3 +229,26 @@ var solve = function (board) {
     }
 
 };
+var canFinish = function (numCourses, prerequisites) {
+    let preMap = {}
+    for (let p of prerequisites) {
+        preMap[p[0]] ? preMap[p[0]].push(p[1]) : preMap[p[0]] = [p[1]]
+    }
+    let visitSet = new Set()
+    function dfs(crs) {
+        if (visitSet.has(crs)) return false
+        if (!preMap[crs] || preMap[crs].length === 0) return true
+        visitSet.add(crs)
+        for (let p of preMap[crs]) {
+            if (!dfs(p)) return false
+
+        }
+        visitSet.delete(crs)
+        preMap[crs] = []
+        return true
+    }
+    for (let i = 0; i < numCourses; i++) {
+        if (!dfs(i)) return false
+    }
+    return true
+};
