@@ -24,3 +24,19 @@ function truckTour(petrolPumps) {
 
     return -1; // If no solution exists
 }
+
+var maxArea = function (height) {
+    let start = 0
+    let end = height.length - 1
+    let maxArea = 0
+    while (start < end) {
+        let currArea = (end - start) * Math.min(height[start], height[end])
+        maxArea = Math.max(maxArea, currArea)
+        if (height[start] < height[end]) {
+            start += 1
+        } else {
+            end -= 1
+        }
+    }
+    return maxArea
+};
