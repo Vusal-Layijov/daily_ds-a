@@ -68,3 +68,18 @@ def _max_pah_sum(grid,r,c,memo):
   dr= _max_pah_sum(grid,r,c+1,memo)
   memo[(r,c)]=grid[r][c] + max(dc,dr)
   return   memo[(r,c)]
+
+
+def powerSum(X, N):
+    def power_sum_recursive(total, power, num):
+        if total == 0:
+            return 1
+        if total < 0 or num**power > total:
+            return 0
+        
+        with_num = power_sum_recursive(total - num**power, power, num + 1)
+       
+        without_num = power_sum_recursive(total, power, num + 1)
+        return with_num + without_num
+
+    return power_sum_recursive(X, N, 1)
