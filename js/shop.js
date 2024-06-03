@@ -85,3 +85,41 @@ var minCostClimbingStairs = function (cost) {
     }
     return Math.min(cost[0], cost[1])
 };
+var findOrder = function (numCourses, prerequisites) {
+    let ord = [];
+    let preList = new Array(numCourses).fill(0).map(() => []);
+
+    for (let p of prerequisites) {
+        preList[p[0]].push(p[1]);
+    }
+
+    let visited = new Array(numCourses).fill(0);
+
+    function dfs(c) {
+        if (visited[c] === 1) return false; // cycle detected
+        if (visited[c] === 2) return true; // already processed
+
+        visited[c] = 1; // mark as visited (in recursion stack)
+
+        for (let p of preList[c]) {
+            if (!dfs(p)) {
+                return false;
+            }
+        }
+
+        visited[c] = 2; // mark as fully processed
+        ord.push(c);
+
+        return true;
+    }
+
+    for (let i = 0; i < numCourses; i++) {
+        if (visited[i] === 0) {
+            if (!dfs(i)) {
+                return []; // cycle detected, return empty array
+            }
+        }
+    }
+
+    return ord;
+};
