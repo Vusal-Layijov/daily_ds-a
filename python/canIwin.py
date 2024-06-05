@@ -164,3 +164,14 @@ class Solution:
                i+=1 
         
         return []
+    
+def superDigit(n, k):
+    sum = 0
+    for d in str(n):
+        if d != 9:
+            sum += int(d)
+        if sum >= 9:
+            sum += -9
+    ans = sum * k % 9
+    print(ans)
+    return 9 if ans == 0 else ans
