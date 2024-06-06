@@ -175,3 +175,16 @@ def superDigit(n, k):
     ans = sum * k % 9
     print(ans)
     return 9 if ans == 0 else ans
+
+def minCost(numProjects, projectId, bid):
+    # Write your code here
+    if len(set(projectId))!=numProjects:
+        return -1
+    myObj={}
+    for i in range(len(projectId)):
+        p=projectId[i]
+        if p in myObj:
+            myObj[p]=min(myObj[p],bid[i])
+        else:
+            myObj[p]=bid[i]
+    return sum(myObj.values())
