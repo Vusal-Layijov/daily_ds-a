@@ -29,3 +29,25 @@ const treeMinValueRecur = (root) =>{
     if(root===null) return Infinity
     return Math.min(root.val,treeMinValueRecur(root.left),treeMinValueRecur(root.right))
 }
+
+var characterReplacement = function (s, k) {
+    let count = {};
+    let maxF = 0;
+    let l = 0;
+    let res = 0;
+
+    for (let r = 0; r < s.length; r++) {
+        count[s[r]] = (count[s[r]] || 0) + 1;
+        maxF = Math.max(maxF, count[s[r]]);
+
+        while ((r - l + 1) - maxF > k) {
+            count[s[l]] -= 1;
+            l += 1;
+        }
+
+        res = Math.max(res, r - l + 1);
+    }
+
+    return res;
+};
+
