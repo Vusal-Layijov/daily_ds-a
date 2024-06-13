@@ -50,4 +50,16 @@ var characterReplacement = function (s, k) {
 
     return res;
 };
+function minimumAbsoluteDifference(arr) {
+    // Write your code here
+    let res = Infinity
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (Math.abs(arr[i] - arr[j]) < res) {
+                res = Math.abs(arr[i] - arr[j])
+            }
+        }
+    }
+    return res
+}
 
