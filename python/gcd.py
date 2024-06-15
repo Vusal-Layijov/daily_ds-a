@@ -75,3 +75,12 @@ class Solution:
                 l+=1
             res=max(res,r-l+1)
         return res
+
+def marcsCakewalk(calorie):
+    # Write your code here
+    calorie.sort(reverse=True)
+    xa = []
+    for i in range(len(calorie)):
+        a = (2**i)*(calorie[i])
+        xa.append(a)
+    return sum(xa)
