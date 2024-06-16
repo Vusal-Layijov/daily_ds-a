@@ -15,3 +15,25 @@ var canPartition = function (nums) {
     }
     return dp.has(target)
 };
+
+
+function gridChallenge(grid) {
+    // Write your code here
+    let res = []
+    for (let r of grid) {
+        let s = r.split('')
+        s.sort()
+        res.push(s.join(''))
+    }
+    let ROWS = grid.length
+    let COLS = grid[0].length
+
+    for (let r = 1; r < ROWS; r++) {
+        for (let c = 1; c < COLS; c++) {
+            if (res[c][r] < res[c - 1][r - 1]) {
+                return 'NO'
+            }
+        }
+    }
+    return 'YES'
+}
