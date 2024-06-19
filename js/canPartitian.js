@@ -37,3 +37,19 @@ function gridChallenge(grid) {
     }
     return 'YES'
 }
+
+function jimOrders(orders) {
+    // Write your code here
+
+    let i = 1
+    let obj = {}
+    let res = []
+    for (let o of orders) {
+        let t = o[0] + o[1]
+        obj[i] = t
+        i++
+    }
+    let keyV = Object.entries(obj)
+    keyV.sort((a, b) => a[1] - b[1])
+    return keyV.map(a => parseInt(a[0]))
+}
