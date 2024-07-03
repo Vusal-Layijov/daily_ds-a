@@ -74,3 +74,25 @@ class Solution:
                 matches -= 1
             l += 1
         return matches == 26
+
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res=[]
+        stack=[]
+
+        def backTracking(openN,closedN):
+            if openN==closedN==n:
+                res.append(''.join(stack))
+                return
+            if openN<n:
+                stack.append('(')
+                backTracking(openN+1,closedN)
+                stack.pop()
+            if closedN<openN:
+                stack.append(')')
+                backTracking(openN,closedN+1)
+                stack.pop()
+
+        backTracking(0,0)
+        return res
