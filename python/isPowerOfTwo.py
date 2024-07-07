@@ -143,3 +143,13 @@ class Solution:
             res -=union(n1,n2)
         return res
         
+
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        ans=[0]*len(temperatures)
+        for i,d in enumerate(temperatures):
+            for j,d2 in enumerate(temperatures[i:]):
+                if d2>d:
+                    ans[i]=j
+                    break
+        return ans
