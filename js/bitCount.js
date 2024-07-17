@@ -6,3 +6,17 @@ function sumXor(n) {
 
 
 }
+var longestConsecutive = function (nums) {
+    let numSet = new Set(nums)
+    let longest = 0
+    for (let n of nums) {
+        if (!numSet.has(n - 1)) {
+            length = 0
+            while (numSet.has(n + length)) {
+                length += 1
+            }
+            longest = Math.max(length, longest)
+        }
+    }
+    return longest
+};
