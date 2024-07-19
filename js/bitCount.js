@@ -23,3 +23,15 @@ var longestConsecutive = function (nums) {
 var findMin = function (nums) {
     return Math.min(...nums)
 };
+function maximumToys(prices, k) {
+    // Write your code here
+    prices.sort((a, b) => a - b)
+    let total = 0
+    let i = 0
+    while (k >= 0 && prices[i] <= k) {
+        k -= prices[i]
+        total += 1
+        i += 1
+    }
+    return total
+}
