@@ -11,3 +11,21 @@ var eraseOverlapIntervals = function (intervals) {
     }
     return count
 };
+
+function toys(w) {
+    // Write your code here
+    w.sort((a, b) => a - b)
+    let count = 1
+    let s = 0
+    let end = 1
+    while (end < w.length) {
+        if (w[end] - w[s] <= 4) {
+            end += 1
+        } else {
+            count += 1
+            s = end
+        }
+    }
+    return count
+
+}
