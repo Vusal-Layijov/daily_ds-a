@@ -54,3 +54,30 @@ def getWays(n, c):
         for j in range(c[i], n + 1):
             table[j] += table[j - c[i]]
     return table[n]
+
+def largestPermutation(k, arr):
+    n = len(arr)
+    pos = {num: i for i, num in enumerate(arr)}
+    
+    for i in range(n):
+        if k <= 0:
+            break
+        valueToPlace = n - i
+        if arr[i] == valueToPlace:
+            continue
+        posToPlace = pos[valueToPlace]
+        
+        # Swap the values in the array
+        arr[i], arr[posToPlace] = arr[posToPlace], arr[i]
+        
+        # Update the positions in the dictionary
+        pos[arr[posToPlace]], pos[arr[i]] = pos[arr[i]], pos[arr[posToPlace]]
+        
+        k -= 1
+    
+    return arr
+
+# Example usage
+k = 2
+arr = [4, 2, 3, 5, 1]
+print(largestPermutation(k, arr))  # Output: [5, 4, 3, 2, 1]
