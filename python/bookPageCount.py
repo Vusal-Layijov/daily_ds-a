@@ -19,3 +19,12 @@ def pageCount(n, p):
         else:
             num = abs(p-n)
             return num//2
+def maxMin(k, arr):
+    # Write your code here
+    res=[]
+    while k>0: 
+        s=min(arr)
+        arr.remove(s)
+        res.append(s)
+        k-=1
+    return res[-1]-res[0]
