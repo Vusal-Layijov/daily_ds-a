@@ -28,3 +28,17 @@ def maxMin(k, arr):
         res.append(s)
         k-=1
     return res[-1]-res[0]
+def maxMin(k, arr):
+    # Sort the array
+    arr.sort()
+    
+    n = len(arr)
+    min_unfairness = float('inf')
+    
+    # Slide a window of size k over the sorted array
+    for i in range(n - k + 1):
+        current_unfairness = arr[i + k - 1] - arr[i]
+        if current_unfairness < min_unfairness:
+            min_unfairness = current_unfairness
+    
+    return min_unfairness
