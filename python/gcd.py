@@ -97,3 +97,18 @@ class Solution:
                 lowest = price
             res = max(res, price - lowest)
         return res
+
+def beautifulPairs(A, B):
+    total = 0
+    
+    if len(A) == 1:
+        return total
+    
+    for a in A:
+        if a in B:
+            total += 1
+            B.remove(a)
+    if total<len(A):
+        return total+1
+    else:
+        return len(A)-1 
