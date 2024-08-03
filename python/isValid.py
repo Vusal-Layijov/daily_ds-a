@@ -104,3 +104,11 @@ def weightedUniformStrings(s, queries):
             result.append("No")
     return result
         
+
+def isFibo(n):
+    a, b = 0, 1
+    lst = [a, b]
+    while b < n:
+      a, b = b, a+b
+      lst.append(b)
+    return 'IsFibo' if n in lst else 'IsNotFibo'
