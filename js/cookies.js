@@ -74,3 +74,37 @@ function beautifulPairs(A, B) {
 let A = [1, 2, 3, 4];
 let B = [1, 2, 3, 3];
 console.log(beautifulPairs(A, B)); // Output: 4
+function chiefHopper(arr) {
+    let low = 0;
+    let high = Math.max(...arr);
+
+    while (low < high) {
+        let mid = Math.floor((low + high) / 2);
+        if (isValidEnergy(mid, arr)) {
+            high = mid;
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return low;
+}
+
+function isValidEnergy(startEnergy, arr) {
+    let energy = startEnergy;
+    for (let height of arr) {
+        if (energy < height) {
+            energy -= (height - energy);
+        } else {
+            energy += (energy - height);
+        }
+        if (energy < 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Example usage:
+let arr = [3, 4, 3, 2, 4];
+console.log(chiefHopper(arr)); // Output: 4
