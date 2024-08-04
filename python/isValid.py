@@ -112,3 +112,8 @@ def isFibo(n):
       a, b = b, a+b
       lst.append(b)
     return 'IsFibo' if n in lst else 'IsNotFibo'
+def chiefHopper(arr):
+    energy = 0
+    for height in reversed(arr):
+        energy = (energy + height + 1) // 2
+    return energy
