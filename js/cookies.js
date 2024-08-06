@@ -108,3 +108,24 @@ function isValidEnergy(startEnergy, arr) {
 // Example usage:
 let arr = [3, 4, 3, 2, 4];
 console.log(chiefHopper(arr)); // Output: 4
+
+
+function solve(n, operations) {
+    // Write your code here
+    // let arr= new Array(n+1).fill(0)
+    // console.log(arr)
+    // for (let o of operations){
+    //     for(let i =o[0]; i<=o[1];i++){
+    //         arr[i]+=o[2]
+    //     }
+    // }
+    // let sum= arr.reduce((acc,ele)=>acc+ele,0)
+    // return parseInt(sum/n)
+    let sum = 0
+    for (let o of operations) {
+        let m = o[1] - o[0] + 1
+        sum += m * o[2]
+    }
+    return parseInt(sum / n)
+
+}
