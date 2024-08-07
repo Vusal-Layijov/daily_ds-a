@@ -129,3 +129,28 @@ function solve(n, operations) {
     return parseInt(sum / n)
 
 }
+function sherlockAndMinimax(arr, p, q) {
+    // Write your code here
+    let myObj = {}
+    for (let n of arr) {
+        for (let i = q; i >= p; i--) {
+            if (i in myObj) {
+                myObj[i].push(Math.abs(i - n))
+            } else {
+                myObj[i] = [Math.abs(i - n)]
+            }
+        }
+    }
+    let minK = Infinity
+    let maxV = -Infinity
+    for (let [key, val] of Object.entries(myObj)) {
+        let curK = parseInt(key)
+        let curMaxV = Math.max(...val)
+        if (curMaxV > maxV) {
+            maxV = curMaxV
+            minK = curK
+        }
+    }
+    return minK
+
+}
