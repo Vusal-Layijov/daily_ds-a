@@ -35,3 +35,16 @@ function maximumToys(prices, k) {
     }
     return total
 }
+function halloweenParty(k) {
+    // Write your code here
+    if (k == 1) return 0
+    if (k == 2) return 1
+    if (k == 3) return 2
+    if (k % 2 == 0) {
+        return (k / 2) ** 2
+    } else {
+        let f = Math.floor(k / 2)
+        let s = f + 1
+        return f * s
+    }
+}
