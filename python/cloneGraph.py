@@ -27,3 +27,14 @@ class Solution:
             r=f
             res+=1
         return res
+
+def preOrder(root):
+    #Write your code here
+    if not root:
+        return
+    print(root.info, end=' ')
+    if root.left:
+        preOrder(root.left)
+    if root.right:
+        preOrder(root.right)
+    
