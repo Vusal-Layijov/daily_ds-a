@@ -54,3 +54,28 @@ var isBalanced = function (root) {
     }
     return dfs(root)[0]
 };
+
+
+function parseAgeToMinutes(age) {
+    const [value, unit] = age.split(' ');
+
+    if (unit.includes('minute')) {
+        return parseInt(value); // Convert minutes to minutes
+    } else if (unit.includes('hour')) {
+        return parseInt(value) * 60; // Convert hours to minutes
+    }
+    // You can add more conditions if needed (like days, weeks, etc.)
+    return 0; // Default if the format is not recognized
+}
+
+function isArraySorted(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        const prev = parseAgeToMinutes(arr[i - 1].age);
+        const current = parseAgeToMinutes(arr[i].age);
+
+        if (prev > current) {
+            return false;
+        }
+    }
+    return true;
+}
