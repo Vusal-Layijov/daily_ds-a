@@ -93,3 +93,11 @@ def jeanisRoute(k, roads, cities):
     dfs(start) 
     return ans[0] - ans[1]
 print(jeanisRoute(3,[[1, 2, 1], [2, 3, 2], [2, 4, 2], [3, 5, 3]],[1,3,4]))
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        rightMax = -1
+        for i in range(len(arr) -1, -1, -1):
+            newMax = max(rightMax, arr[i])
+            arr[i] = rightMax
+            rightMax = newMax
+        return arr
