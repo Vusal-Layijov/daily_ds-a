@@ -140,3 +140,18 @@ class Solution:
                 nums[mid], nums[high] = nums[high], nums[mid]
                 high -= 1
         return nums
+class Solution(object):
+    def replaceElements(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: List[int]
+        """
+        if len(arr)==1:
+            return [-1]
+        oldM=-1
+        for i in range(len(arr)-1,-1,-1):
+            newM=max(oldM, arr[i])
+            arr[i]=oldM
+            oldM=newM
+        return arr
+        
