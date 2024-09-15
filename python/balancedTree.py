@@ -169,3 +169,60 @@ class Solution(object):
                 i+=1
             j+=1
         return i==len(s)
+    
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if len(strs)==1:
+            return strs[0]
+        res=""
+
+        lenI=float('infinity')
+        for i in strs:
+            if len(i)<lenI:
+                lenI=len(i)
+            if len(i)==0:
+                return ""
+        i=0
+        itHas=True
+        while i<lenI and itHas:
+            myset=set()
+            h=""
+            for s in strs:
+                if s:
+                    myset.add(s[i])
+                    h=s[i]
+
+            if len(myset)==1:
+                res+=h
+                i+=1
+            else:
+                itHas=False
+        return res
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+        
