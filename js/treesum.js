@@ -63,3 +63,17 @@ function minimumAbsoluteDifference(arr) {
     return res
 }
 
+var generate = function (numRows) {
+    let res = [[1]];
+    for (let i = 0; i < numRows - 1; i++) {
+        let tmp = [0];
+        tmp = tmp.concat(res[res.length - 1]);
+        tmp.push(0);
+        let row = [];
+        for (let j = 0; j < res[res.length - 1].length + 1; j++) {
+            row.push(tmp[j] + tmp[j + 1]);
+        }
+        res.push(row);
+    }
+    return res;
+};
