@@ -203,6 +203,24 @@ class Solution(object):
                 itHas=False
         return res
 
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        mySet=set()
+        for e in emails:
+            newA=e.split("@")
+            newS=''
+            for s in newA[0]:
+                if s=='.':
+                    continue
+                if s=='+':
+                    break
+                else:
+                    newS+=s
+            newS+='@'
+            newS+=newA[1]
+            print(newS)
+            mySet.add(newS)
+        return len(mySet)
 
 
 
