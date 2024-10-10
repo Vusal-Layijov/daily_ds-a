@@ -221,17 +221,18 @@ class Solution:
             print(newS)
             mySet.add(newS)
         return len(mySet)
+def inOrder(root):
+    result = []
+    
+    def traverse(node):
+        if not node:
+            return
+        traverse(node.left)
+        result.append(str(node.info))
+        traverse(node.right)
 
-
-
-
-        
-
-
-
-
-
-
+    traverse(root)
+    print(" ".join(result))
 
 
 
