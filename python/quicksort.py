@@ -12,3 +12,11 @@ def quicksort(arr):
     leftsort=quicksort(arr)
     rightsort=quicksort(arr)
     return leftsort+[pivot]+rightsort
+
+
+def height(root):
+    if root is None:
+        return -1
+    left=height(root.left)
+    right=height(root.right)
+    return 1+ max(left,right)
