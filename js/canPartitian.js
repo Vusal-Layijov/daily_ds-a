@@ -53,3 +53,20 @@ function jimOrders(orders) {
     keyV.sort((a, b) => a[1] - b[1])
     return keyV.map(a => parseInt(a[0]))
 }
+function equalStacks(h1, h2, h3) {
+    let sum1 = h1.reduce((accumulator, currentValue) => accumulator + currentValue);
+    let sum2 = h2.reduce((accumulator, currentValue) => accumulator + currentValue);
+    let sum3 = h3.reduce((accumulator, currentValue) => accumulator + currentValue);
+    let m;
+    while (sum1 !== sum2 || sum2 !== sum3) {
+        m = Math.max(sum1, sum2, sum3);
+        if (m === sum1) {
+            sum1 -= (h1.shift());
+        } else if (m === sum2) {
+            sum2 -= (h2.shift());
+        } else if (m === sum3) {
+            sum3 -= (h3.shift());
+        }
+    }
+    return sum1;
+}
