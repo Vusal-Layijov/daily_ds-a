@@ -70,3 +70,24 @@ function equalStacks(h1, h2, h3) {
     }
     return sum1;
 }
+function processData(input) {
+    //Enter your code here
+
+    const s = input.split("\n");
+
+    const queue = []
+    s.shift()
+    s.forEach(op => {
+        if (op.startsWith("1")) {
+            queue.push(op.split(" ")[1])
+        }
+        if (op === '2') {
+            queue.shift();
+        }
+        if (op === '3') {
+            console.log(queue[0])
+        }
+    })
+
+
+} 
