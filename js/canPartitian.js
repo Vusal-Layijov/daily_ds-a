@@ -91,3 +91,25 @@ function processData(input) {
 
 
 } 
+var numUniqueEmails = function (emails) {
+    let res = new Set()
+    for (let e of emails) {
+        let res1 = e.split('@')
+        console.log(res1)
+        let gen = ''
+        for (let c of res1[0]) {
+            if (c == '+') {
+                break
+            }
+            if (c == ".") {
+                continue
+            } else {
+                gen += c
+            }
+        }
+        gen += "@"
+        gen += res1[res1.length - 1]
+        res.add(gen)
+    }
+    return res.size
+};
