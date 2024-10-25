@@ -81,3 +81,31 @@ def largestPermutation(k, arr):
 k = 2
 arr = [4, 2, 3, 5, 1]
 print(largestPermutation(k, arr))  # Output: [5, 4, 3, 2, 1]
+def topView(root):
+    if not root:
+        return
+
+    # Dictionary to store the top view nodes with horizontal distance as key
+    top_view = {}
+    
+    # Array-based queue for level order traversal; stores pairs of node and its horizontal distance
+    queue = [(root, 0)]  # (node, horizontal distance)
+    
+    while queue:
+        node, hd = queue.pop(0)  # Simulate dequeue operation by popping from the front
+        
+        # If the horizontal distance is not in top_view, add the node's info to it
+        if hd not in top_view:
+            top_view[hd] = node.info
+
+        # Add left child to queue with HD - 1
+        if node.left:
+            queue.append((node.left, hd - 1))
+
+        # Add right child to queue with HD + 1
+        if node.right:
+            queue.append((node.right, hd + 1))
+    
+    # Extract and sort keys to print the top view in the correct order
+    sorted_hd_keys = sorted(top_view.keys())
+    print(" ".join(str(top_view[hd]) for hd in sorted_hd_keys))
