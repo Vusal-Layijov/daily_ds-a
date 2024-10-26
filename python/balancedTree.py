@@ -233,6 +233,18 @@ def inOrder(root):
 
     traverse(root)
     print(" ".join(result))
+def levelOrder(root):
+    #Write your code here
+    q=[root]
+    res=[]
+    while q:
+        c=q.pop(0)
+        res.append(c.info)
+        if c.left:
+            q.append(c.left)
+        if c.right:
+            q.append(c.right)
+    print(' '.join(str(r) for r in res))
 
 
 
