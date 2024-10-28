@@ -109,3 +109,24 @@ def topView(root):
     # Extract and sort keys to print the top view in the correct order
     sorted_hd_keys = sorted(top_view.keys())
     print(" ".join(str(top_view[hd]) for hd in sorted_hd_keys))
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        i, j = 0, len(s) - 1
+        
+        while i < j:
+            if s[i] == s[j]:
+                i += 1
+                j -= 1
+            else:
+                return self.validPalindromeUtil(s, i + 1, j) or self.validPalindromeUtil(s, i, j - 1)
+        return True
+    
+    def validPalindromeUtil(self, s, i, j):
+        while i < j:
+            if s[i] == s[j]:
+                i += 1
+                j -= 1
+            else:
+                return False
+        
+        return True
