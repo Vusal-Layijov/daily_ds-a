@@ -206,3 +206,12 @@ class Solution:
 
         dfs(root)
         return res
+def insertNodeAtTail(head, data):
+    node= SinglyLinkedListNode(data)
+    if not head:
+        return node
+    current=head
+    while current.next:
+        current=current.next
+    current.next=node
+    return head
