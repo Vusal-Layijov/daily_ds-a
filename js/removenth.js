@@ -32,3 +32,24 @@ function removeNthFromEnd(head, n) {
 
     return head;
 }
+var isAlienSorted = function (words, order) {
+    let myObj = {}
+    for (let i = 0; i < order.length; i++) {
+        myObj[order[i]] = i
+    }
+    for (let i = 0; i < words.length - 1; i++) {
+        let w1 = words[i]
+        let w2 = words[i + 1]
+        for (let j = 0; j < w1.length; j++) {
+            if (j == w2.length) return false
+            if (w1[j] != w2[j]) {
+                if (myObj[w2[j]] < myObj[w1[j]]) {
+                    return false
+                } else {
+                    break
+                }
+            }
+        }
+    }
+    return true
+};
