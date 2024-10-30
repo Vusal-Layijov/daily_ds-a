@@ -215,3 +215,13 @@ def insertNodeAtTail(head, data):
         current=current.next
     current.next=node
     return head
+def has_cycle(head):
+    visited=set()
+    current=head
+    while current:
+        if current in visited:
+            return 1
+        else:
+            visited.add(current)
+            current =current.next
+    return 0
