@@ -46,3 +46,21 @@ function findJudge(n, trust) {
 
     return -1;  // Return -1 if no judge found
 }
+function truckTour(petrolpumps) {
+    // Write your code here
+    let n = petrolpumps.length - 1
+    let currentPetrol = 0
+    let start = 0
+    for (let i = 0; i < n; i++) {
+        let petrol = petrolpumps[i][0]
+        let distance = petrolpumps[i][1]
+        let netPetrol = petrol - distance
+        currentPetrol += netPetrol
+        if (currentPetrol < 0) {
+            start = i + 1;
+            currentPetrol = 0
+        }
+    }
+    return start
+
+}
