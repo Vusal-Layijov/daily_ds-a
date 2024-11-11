@@ -49,3 +49,33 @@ var maxAreaOfIsland = function (grid) {
     return maxI;
 };
 
+let result = "";
+const history = [""];
+
+function processCommand(input) {
+    const [command, option] = input.split(" ");
+    switch (command) {
+        case "1":
+            result += option;
+            history.push(result);
+            break;
+        case "2":
+            result = result.slice(0, result.length - option);
+            history.push(result);
+            break;
+        case "3":
+            console.log(result[option - 1]);
+            break;
+        case "4":
+            history.pop();
+            result = history[history.length - 1];
+            break;
+        default:
+            break;
+    }
+}
+
+function processData(input) {
+    input.split(/\r?\n/).forEach(e => processCommand(e))
+
+}
