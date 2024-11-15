@@ -79,3 +79,34 @@ function processData(input) {
     input.split(/\r?\n/).forEach(e => processCommand(e))
 
 }
+function largestRectangle(h) {
+    let stack = [];
+    let maxArea = 0;
+    let index = 0;
+
+    while (index < h.length) {
+        // Push the current bar to the stack if it's higher than the bar at stack top
+        if (stack.length === 0 || h[stack[stack.length - 1]] <= h[index]) {
+            stack.push(index++);
+        } else {
+            // Calculate area with h[tp] as the smallest (or minimum height) bar 'h'
+            let tp = stack.pop();
+            // If the stack is empty means the popped element was the smallest element so far
+            let area = h[tp] * (stack.length === 0 ? index : index - stack[stack.length - 1] - 1);
+            maxArea = Math.max(maxArea, area);
+        }
+    }
+
+    // Now pop the remaining bars from stack and calculate area with every popped bar
+    while (stack.length !== 0) {
+        let tp = stack.pop();
+        let area = h[tp] * (stack.length === 0 ? index : index - stack[stack.length - 1] - 1);
+        maxArea = Math.max(maxArea, area);
+    }
+
+    return maxArea;
+}
+
+// Example usage
+const heights = [1, 2, 3, 4, 5];
+console.log(largestRectangle(heights)); // Output: 9
