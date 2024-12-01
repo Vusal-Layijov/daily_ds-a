@@ -256,3 +256,127 @@ def mergingIntervals(arr):
         
 
 print(mergingIntervals([[1, 3], [2, 6], [8, 10], [15, 18]])==[[1, 6], [8, 10], [15, 18]])
+
+def crosswordPuzzle(crossword, words):
+    # Write your code here
+    solSteps=[]
+    words = words.split(';')
+    for i in range(len(crossword)):
+       
+        for j in range(len(crossword[i])):
+            if crossword[i][j]=='-':
+                if j<len(crossword[i])-1 and crossword[i][j+1]=='-' and (crossword[i][j-1]!='-' and j>0 ):
+                    k=0
+                    while crossword[i][j+k]=='-':
+                       if j+k==9:
+                           k+=1
+                           break
+                       k+=1
+                    solSteps.append("h"+str(i)+str(j)+str(k))  
+                elif j==0 and crossword[i][1]=='-':
+                    k=0
+                    while crossword[i][k]=='-':
+                   
+                       if k==9:
+                           k=10
+                           break
+                       k+=1
+                    solSteps.append("h"+str(i)+str(j)+str(k))
+                elif  i<len(crossword)-1 and i> 0 and crossword[i+1][j]=='-' and crossword[i-1][j]!='-':
+                    k=0
+                    for x in range(i,len(crossword)):
+                        if crossword[x][j]!='-':
+                           break
+                        k+=1
+                    solSteps.append("v"+str(i)+str(j)+str(k))    
+                elif  i== 0 and crossword[1][j]=='-':
+                    k=0
+                    for x in range(i,len(crossword)):
+                        if crossword[x][j]!='-':
+                           break
+                        k+=1
+                    solSteps.append("v"+str(i)+str(j)+str(k))    
+    def canFillWord(word,blankword):
+        orientation,row,col,size = blankword[0],blankword[1],blankword[2],blankword[3:]
+        row,col,size = int(row),int(col),int(size)
+        if len(word)!= size :
+            return False
+        if orientation=='v':
+            for r in range(row, row+len(word)):
+                if crossword[r][col]!="-" and crossword[r][col]!=word[r-row]:
+                    return False
+            for r in range(row, row+len(word)):
+                if crossword[r][col]=="-" or crossword[r][col]==word[r-row]:
+                    l=list(crossword[r])
+                    l[col]=word[r-row]                
+                    crossword[r]= "".join(l)
+        if orientation=='h':
+            for c in range(col, col+len(word)):
+                if crossword[row][c]!="-" and crossword[row][c]!=word[c-col]:
+                    return False
+            l=list(crossword[row])
+            for c in range(col,col+len(word)):
+                if crossword[row][c]=="-" or crossword[row][c]==word[c-col]:
+                    l[c] = word[c-col]
+            crossword[row]="".join(l)
+        return True    
+    def unFill(word,blankword):
+       
+        orientation,row,col,size = blankword[0],int(blankword[1]),int(blankword[2]),int(blankword[3:])
+        if orientation=='v':
+            for r in range(row, row+len(word)):
+                if crossword[r][col]==word[r-row]:
+                    l=list(crossword[r])
+                    l[col]="-"                
+                    crossword[r]= "".join(l)
+        if orientation=='h':
+            l=list(crossword[row])
+            for c in range(col,col+len(word)):
+                if  crossword[row][c]==word[c-col]:
+                    l[c] = "-"
+            crossword[row]="".join(l)
+           
+    def solve(words,solSteps,i=0,k=0,done=[]):
+        
+        if len(done) == len(words):
+            
+            return crossword
+       
+        if canFillWord(words[i],solSteps[k]):
+            
+            if  words[i] not in done:
+                if k < len(solSteps)-1:
+                    k+=1
+                done.append(words[i])
+               
+            
+            i=0
+           
+            return solve(words,solSteps,i,k,done)
+        else:
+           
+            if i < len(words)-1:
+                i+=1
+            else:
+                i=0
+               
+                if done:
+                    w = done[len(done)-1]
+                    
+                    for x in range(len(words)):
+                        if len(words[x])==len(w) and words[x]!=w:
+                            i = x
+                            unFill(done[len(done)-1], solSteps[k-1])
+                            
+                            del done[len(done)-1]
+                            if done:
+                                
+                                canFillWord(done[len(done)-1],solSteps[len(done)-1])
+                            break
+                    k = len(done)
+                    print(words[i],solSteps[k])
+
+                   
+               
+            return solve(words,solSteps,i,k,done)
+    return solve(words,solSteps,i=0,k=0,done=[])
