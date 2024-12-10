@@ -335,3 +335,20 @@ class Solution(object):
         :rtype: List[int]
         """
         return nums+nums
+    
+def passwordCracker(passwords, loginAttempt):
+    def backtrack(remaining_attempt, path):
+        if not remaining_attempt:
+            return path
+        for password in passwords:
+            if remaining_attempt.startswith(password):
+                result = backtrack(remaining_attempt[len(password):], path + [password])
+                if result:
+                    return result    
+        return None
+
+    result = backtrack(loginAttempt, [])
+    if result:
+        return ' '.join(result)
+    else:
+        return 'WRONG PASSWORD'
