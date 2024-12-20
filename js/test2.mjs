@@ -57,3 +57,25 @@ function solution(a) {
 
     return a[indexOfMinimum];
 }
+
+
+var maxProduct = function (nums) {
+    let res = Math.max(...nums);
+    let curMin = 1;
+    let curMax = 1;
+
+    for (let n of nums) {
+        if (n === 0) {
+            curMin = 1;
+            curMax = 1;
+            continue;
+        }
+
+        let tmp = curMax; // Store the original curMax before updating
+        curMax = Math.max(curMax * n, curMin * n, n);
+        curMin = Math.min(tmp * n, curMin * n, n);
+
+        res = Math.max(curMax, res);
+    }
+    return res;
+};
