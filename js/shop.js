@@ -132,3 +132,17 @@ var invertTree = function (root) {
     invertTree(root.right)
     return root
 };
+var wordBreak = function (s, wordDict) {
+    let newArray = new Array(s.length + 1).fill(false);
+    newArray[s.length] = true; 
+
+    for (let i = s.length - 1; i >= 0; i--) {
+        for (let w of wordDict) {
+            if (i + w.length <= s.length && s.substring(i, i + w.length) === w) {
+                newArray[i] = newArray[i + w.length];
+                if (newArray[i]) break; 
+            }
+        }
+    }
+    return newArray[0];
+};
