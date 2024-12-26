@@ -146,3 +146,29 @@ var wordBreak = function (s, wordDict) {
     }
     return newArray[0];
 };
+var isIsomorphic = function (s, t) {
+    if (s.length !== t.length) return false;
+
+    let mapST = {}; // Object for s -> t mapping
+    let mapTS = {}; // Object for t -> s mapping
+
+    for (let i = 0; i < s.length; i++) {
+        let charS = s[i];
+        let charT = t[i];
+
+        // Check s -> t mapping
+        if (mapST[charS] && mapST[charS] !== charT) {
+            return false;
+        }
+        // Check t -> s mapping
+        if (mapTS[charT] && mapTS[charT] !== charS) {
+            return false;
+        }
+
+        // Create mappings
+        mapST[charS] = charT;
+        mapTS[charT] = charS;
+    }
+
+    return true;
+};
