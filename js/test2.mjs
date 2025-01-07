@@ -104,3 +104,21 @@ var mergeAlternately = function (word1, word2) {
 
     return res;
 };
+var containsNearbyDuplicate = function (nums, k) {
+    let myObj = {}
+    for (let i = 0; i < nums.length; i++) {
+        if (myObj[nums[i]]) {
+            myObj[nums[i]].push(i)
+        } else {
+            myObj[nums[i]] = [i]
+        }
+    }
+    for (let key in myObj) {
+        for (let i = myObj[key].length - 1; i > 0; i--) {
+            if (myObj[key][i] - myObj[key][i - 1] <= k) {
+                return true
+            }
+        }
+    }
+    return false
+};
