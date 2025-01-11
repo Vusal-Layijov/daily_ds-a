@@ -122,3 +122,15 @@ var containsNearbyDuplicate = function (nums, k) {
     }
     return false
 };
+var numOfSubarrays = function (arr, k, threshold) {
+    let eS = arr.slice(0, k - 1).reduce((e, acc) => e + acc, 0)
+    console.log(eS)
+    let res = 0
+    for (let i = 0; i < arr.length - k + 1; i++) {
+        eS += arr[i + k - 1]
+        let av = eS / k
+        if (av >= threshold) res += 1
+        eS -= arr[i]
+    }
+    return res
+};
