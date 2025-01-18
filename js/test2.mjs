@@ -134,3 +134,19 @@ var numOfSubarrays = function (arr, k, threshold) {
     }
     return res
 };
+var calPoints = function (operations) {
+    let records = [];
+    console.log(operations);
+    for (let o of operations) {
+        if (o == '+') {
+            records.push(records[records.length - 1] + records[records.length - 2]);
+        } else if (o == 'D') {
+            records.push(records[records.length - 1] * 2);
+        } else if (o == 'C') {
+            records.pop();
+        } else {
+            records.push(parseInt(o));
+        }
+    }
+    return records.reduce((a, e) => a + e, 0);
+};
