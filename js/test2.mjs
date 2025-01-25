@@ -162,3 +162,19 @@ var makeGood = function (s) {
     }
     return stack.join('');  // Join the stack to form the resultant string
 };
+var search = function (nums, target) {
+    let start = 0
+    let end = nums.length - 1
+
+    while (start <= end) {
+        let med = Math.floor((start + end) / 2)
+        if (nums[med] === target) {
+            return med
+        } else if (nums[med] < target) {
+            start = med + 1
+        } else if (nums[med] > target) {
+            end = med - 1
+        }
+    }
+    return -1
+};
