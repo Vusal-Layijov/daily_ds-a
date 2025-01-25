@@ -150,3 +150,15 @@ var calPoints = function (operations) {
     }
     return records.reduce((a, e) => a + e, 0);
 };
+var makeGood = function (s) {
+    if (s.length === 0) return '';  // Check if the input string is empty
+    let stack = [s[0]];  // Initialize the stack with the first character if not empty
+    for (let i = 1; i < s.length; i++) {
+        if (stack.length > 0 && stack[stack.length - 1].toLowerCase() === s[i].toLowerCase() && stack[stack.length - 1] !== s[i]) {
+            stack.pop();  // Pop if characters are same letter different case
+        } else {
+            stack.push(s[i]);  // Otherwise, push the current character
+        }
+    }
+    return stack.join('');  // Join the stack to form the resultant string
+};
