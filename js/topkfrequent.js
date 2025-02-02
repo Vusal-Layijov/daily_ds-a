@@ -62,3 +62,13 @@ var guessNumber = function (n) {
         }
     }
 };
+var arrangeCoins = function (n) {
+    let s = 0
+    let rem = 0
+    while (rem < n && n - rem >= s + 1) {
+        s += 1
+        rem += s
+    }
+    return s
+
+};
