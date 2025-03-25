@@ -293,3 +293,14 @@ class Solution:
             i += 1
     
         return count >= n
+    
+def gamingArray(arr):
+    winner = 1 
+    while len(arr) > 1:
+        max_index = arr.index(max(arr))  
+        arr = arr[:max_index]
+        if len(arr)==0:
+            return 'BOB' if winner else 'ANDY'  
+        winner = 1 - winner
+    
+    return 'BOB' if winner else 'ANDY'
