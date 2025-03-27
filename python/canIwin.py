@@ -304,3 +304,21 @@ def gamingArray(arr):
         winner = 1 - winner
     
     return 'BOB' if winner else 'ANDY'
+
+def contacts(queries):
+    # Write your code here
+    res=[]
+    count=[]
+    
+    for q in queries:
+        if q[0]=='add':
+            res.append(q[1])
+        else:
+            c=0
+            for r in res:
+                if r.startswith(q[1]):
+                    c+=1
+            count.append(c)
+            
+    return count
+    
