@@ -322,3 +322,34 @@ def contacts(queries):
             
     return count
     
+
+def connectedCell(matrix):
+    # Write your code here
+    print(matrix)
+    mySet=set()
+    biggest=0
+    r=len(matrix)
+    c=len(matrix[0])
+    biggest=0
+    
+    def findNbr(n,m):
+        q=[[n,m]]
+        directions = [[0, 1], [1, 0], [-1, 0], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]
+        reg=1
+        while q:
+            kn,km=q.pop()
+            for a,b in directions:
+                nn=kn+a
+                nm=km+b
+                if nn in range(r) and nm in range(c) and (nn,nm) not in mySet and matrix[nn][nm]:
+                    mySet.add((nn,nm))
+                    q.append([nn,nm])
+                    reg+=1
+        return reg
+    for i in range(r):
+        for j in range(c):
+            if matrix[i][j] and (i,j) not in mySet:
+                mySet.add((i,j))
+                area=findNbr(i,j)
+                biggest=max(area, biggest)
+    return biggest
