@@ -353,3 +353,15 @@ def connectedCell(matrix):
                 area=findNbr(i,j)
                 biggest=max(area, biggest)
     return biggest
+
+
+def minimumBribes(q):
+    b = 0
+    for i in range(len(q)):
+        if q[i]-(i+1)>2:
+            print('Too chaotic')
+            return
+        for j in range(max(0,(q[i]-2)),i):
+            if q[j]>q[i]:
+                b+=1
+    print(b)
