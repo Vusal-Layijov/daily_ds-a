@@ -115,3 +115,34 @@ async function getMovieList(year) {
         console.error('Failed to fetch data:', error);
     }
 }
+function biggerIsGreater(w) {
+    let arr = w.split('');
+    let i = arr.length - 2;
+
+    // Step 1: Find pivot
+    while (i >= 0 && arr[i] >= arr[i + 1]) {
+        i--;
+    }
+
+    if (i < 0) return 'no answer';
+
+    // Step 2: Find rightmost successor to the pivot
+    let j = arr.length - 1;
+    while (arr[j] <= arr[i]) {
+        j--;
+
+    }
+
+    // Step 3: Swap pivot and successor
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+
+    // Step 4: Reverse the suffix
+    let left = i + 1, right = arr.length - 1;
+    while (left < right) {
+        [arr[left], arr[right]] = [arr[right], arr[left]];
+        left++;
+        right--;
+    }
+
+    return arr.join('');
+}
