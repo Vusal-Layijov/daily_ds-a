@@ -130,3 +130,14 @@ class Solution:
                 return False
         
         return True
+def nonDivisibleSubset(k, s):
+    rem=[0]*k
+    for i in range(len(s)):
+        rem[s[i]%k]+=1
+    count=min(rem[0],1)
+    for j in range(1,(k//2)+1):
+        if j!=k-j:
+            count+=max(rem[j],rem[k-j])
+        else:
+            count+=min(rem[j],1)
+    return count
