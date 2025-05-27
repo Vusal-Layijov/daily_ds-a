@@ -141,3 +141,43 @@ def nonDivisibleSubset(k, s):
         else:
             count+=min(rem[j],1)
     return count
+
+def maximumSum(a, m):
+    prefix = 0
+    max_mod_sum = 0
+    prefix_sums = []
+
+    def insert_sorted(arr, val):
+        """Insert val into arr maintaining sorted order."""
+        left, right = 0, len(arr)
+        while left < right:
+            mid = (left + right) // 2
+            if arr[mid] < val:
+                left = mid + 1
+            else:
+                right = mid
+        arr.insert(left, val)
+
+    def find_next_greater(arr, val):
+        """Find the smallest element in arr greater than val."""
+        left, right = 0, len(arr)
+        while left < right:
+            mid = (left + right) // 2
+            if arr[mid] <= val:
+                left = mid + 1
+            else:
+                right = mid
+        return arr[left] if left < len(arr) else None
+
+    for number in a:
+        prefix = (prefix + number) % m
+        max_mod_sum = max(max_mod_sum, prefix)
+
+        next_greater = find_next_greater(prefix_sums, prefix)
+        if next_greater is not None:
+            mod_sum = (prefix - next_greater + m) % m
+            max_mod_sum = max(max_mod_sum, mod_sum)
+
+        insert_sorted(prefix_sums, prefix)
+
+    return max_mod_sum
