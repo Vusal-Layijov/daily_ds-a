@@ -163,3 +163,23 @@ def MinWindowSubstring(strArr):
         return substring
     windowSize += 1
     
+
+
+class Solution:
+    def mergeArrays(self, nums1: List[List[int]], nums2: List[List[int]]) -> List[List[int]]:
+        myObj={}
+        for n in nums1:
+            if n[0] in myObj:
+                myObj[n[0]]=myObj[n[0]]+n[1]
+            else:
+                myObj[n[0]]=n[1]
+        for n in nums2:
+            if n[0] in myObj:
+                myObj[n[0]]=myObj[n[0]]+n[1]
+            else:
+                myObj[n[0]]=n[1]
+        newA=[]
+        for key,val in myObj.items():
+            newA.append([key,val])
+        newA.sort(key=lambda x : x[0])
+        return newA
