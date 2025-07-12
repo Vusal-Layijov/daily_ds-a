@@ -183,3 +183,14 @@ class Solution:
             newA.append([key,val])
         newA.sort(key=lambda x : x[0])
         return newA
+
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n=nums.count(0)
+        while n>0:
+            nums.remove(0)
+            nums.append(0)
+            n-=1 
