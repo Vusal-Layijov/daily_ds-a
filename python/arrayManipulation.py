@@ -156,3 +156,27 @@ class Solution:
                     recolor-=1
                 l+=1
         return res
+def noPrefix(words):
+    # Write your code here
+    content = {}
+    subs = {}
+    for word in words:
+        content[word] = content.get(word, 0) + 1
+        for i in range(len(word)-1):
+            subs[word[:i+1]] = 1
+        if word in subs:
+            print('BAD SET')
+            print(word)
+            return
+        for i in range(len(word)):
+            if word[:i+1] in content:
+                if i == len(word)-1:
+                    if content[word] > 1:
+                        print('BAD SET')
+                        print(word)
+                        return
+                else:
+                    print('BAD SET')
+                    print(word)
+                    return
+    print('GOOD SET')
