@@ -180,3 +180,13 @@ def noPrefix(words):
                     print(word)
                     return
     print('GOOD SET')
+
+
+def gamingArray(arr):
+    cm=0
+    m=0
+    for n in arr:
+        if n>cm:
+            cm=n
+            m+=1
+    return 'BOB' if m%2==1 else 'ANDY'
