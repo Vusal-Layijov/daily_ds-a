@@ -190,3 +190,8 @@ def gamingArray(arr):
             cm=n
             m+=1
     return 'BOB' if m%2==1 else 'ANDY'
+
+def gameOfStones(n):
+    if n % 7 == 0 or n % 7 == 1:
+        return "Second"
+    return "First"
