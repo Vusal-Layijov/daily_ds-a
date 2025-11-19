@@ -195,3 +195,29 @@ def gameOfStones(n):
     if n % 7 == 0 or n % 7 == 1:
         return "Second"
     return "First"
+def hackerlandRadioTransmitters(houses, k):
+    # Remove duplicates and sort the house positions
+    houses = sorted(set(houses))
+    i = 0
+    n = len(houses)
+    num_transmitters = 0
+
+    while i < n:
+        num_transmitters += 1
+
+        # Step 1: find the furthest house to the right that is still within k of houses[i]
+        loc = houses[i] + k
+        while i < n and houses[i] <= loc:
+            i += 1
+
+        # Step 2: place the transmitter on the house just before the location went out of range
+        # i was incremented once too many in the previous loop
+        i -= 1
+        transmitter_position = houses[i]
+
+        # Step 3: skip all houses that are covered by this transmitter
+        loc = transmitter_position + k
+        while i < n and houses[i] <= loc:
+            i += 1
+
+    return num_transmitters
