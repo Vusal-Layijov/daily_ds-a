@@ -45,3 +45,12 @@ class Solution:
                 start = midd + 1  # Move start to the right of midd
         
         return -1
+
+def pairs(k, arr):
+    # Write your code here
+    seen=set(arr)
+    s=0
+    for n in arr:
+        if (n+k) in seen:
+            s+=1
+    return s
